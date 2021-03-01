@@ -1,0 +1,208 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PYTHON——创作自己的库（知乎转载，有改动，仅适用于WINDOWS） | Gridea</title>
+<link rel="shortcut icon" href="https://fangcatchina.github.io//favicon.ico?v=1614600730976">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fangcatchina.github.io//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="PYTHON——创作自己的库（知乎转载，有改动，仅适用于WINDOWS） | Gridea - Atom Feed" href="https://fangcatchina.github.io//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="准备工作
+必须安装Python3，并确保可以使用pip工具！下方代码请在CMD中执行：
+pip install --user --upgrade setuptools wheel
+pip install --user --upgrade t..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://fangcatchina.github.io/">
+  <img class="avatar" src="https://fangcatchina.github.io//images/avatar.png?v=1614600730976" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              PYTHON——创作自己的库（知乎转载，有改动，仅适用于WINDOWS）
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-03-01
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="准备工作">准备工作</h2>
+<p>必须安装Python3，并确保可以使用pip工具！下方代码请在CMD中执行：</p>
+<pre><code>pip install --user --upgrade setuptools wheel
+pip install --user --upgrade twine
+</code></pre>
+<p>注册Pypi账号<br>
+http://pypi.org</p>
+<h2 id="编写python库程序单独文件夹中">编写Python库程序（单独文件夹中）</h2>
+<p>不再赘述</p>
+<h2 id="打包并上传">打包并上传</h2>
+<p>在文件夹下创建setup.py，并写入以下代码</p>
+<pre><code>import setuptools
+<p>with open(&quot;README.md&quot;, &quot;r&quot;,encoding='utf-8') as fh:<br>
+long_description = fh.read()</p>
+<p>setuptools.setup(<br>
+name=&quot;库名&quot;,<br>
+version=&quot;版本号&quot;,<br>
+author=&quot;作者&quot;,<br>
+author_email=&quot;邮箱&quot;,<br>
+description=&quot;简介&quot;,<br>
+long_description=long_description,<br>
+long_description_content_type=&quot;text/markdown&quot;,<br>
+url=&quot;项目地址&quot;,<br>
+packages=setuptools.find_packages(),<br>
+classifiers=[<br>
+&quot;Programming Language :: Python :: 3&quot;,  #Python版本<br>
+&quot;License :: OSI Approved :: MIT License&quot;,  #开源协议<br>
+&quot;Operating System :: OS Independent&quot;,<br>
+],<br>
+)<br>
+</code></pre></p>
+<p>创建README.md，写入项目详细信息（Markdown格式），创建licence.md，写入开源许可证内容</p>
+<p>CMD cd到库文件夹，输入以下指令（注意，最后一步会要求输入Pypi账号密码）：</p>
+<pre><code>python setup.py sdist bdist_wheel
+python twine upload dist/*
+</code></pre>
+<h2 id="测试安装库">测试安装库</h2>
+<p>CMD输入指令</p>
+<pre><code>pip install 库名
+</code></pre>
+<p>如果安装成功了，就说明我们的库上传成功了</p>
+<p>https://zhuanlan.zhihu.com/p/60836179</p>
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://fangcatchina.github.io/post/hello-gridea/">
+              <h3 class="post-title">
+                Hello Gridea
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://fangcatchina.github.io//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
