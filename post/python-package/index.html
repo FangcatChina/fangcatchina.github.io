@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>PYTHON——创作自己的库（知乎转载，有改动，仅适用于WINDOWS） | Gridea</title>
-<link rel="shortcut icon" href="https://fangcatchina.github.io//favicon.ico?v=1614601088774">
+<link rel="shortcut icon" href="https://fangcatchina.github.io//favicon.ico?v=1614601147831">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://fangcatchina.github.io//styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="PYTHON——创作自己的库（知乎转载，有改动，仅适用于WINDOWS） | Gridea - Atom Feed" href="https://fangcatchina.github.io//atom.xml">
@@ -24,7 +24,7 @@ pip install --user --upgrade t..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://fangcatchina.github.io/">
-  <img class="avatar" src="https://fangcatchina.github.io//images/avatar.png?v=1614601088774" alt="">
+  <img class="avatar" src="https://fangcatchina.github.io//images/avatar.png?v=1614601147831" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -110,38 +110,39 @@ http://pypi.org</p>
 <p>不再赘述</p>
 <h2 id="打包并上传">打包并上传</h2>
 <p>在文件夹下创建setup.py，并写入以下代码</p>
-```
-import setuptools
-<p>with open(&quot;README.md&quot;, &quot;r&quot;) as fh:<br>
-long_description = fh.read()</p>
-<p>setuptools.setup(<br>
-name=&quot;库名&quot;,<br>
-version=&quot;版本&quot;,<br>
-author=&quot;作者&quot;,<br>
-author_email=&quot;邮箱&quot;,<br>
-description=&quot;简介&quot;,<br>
-long_description=long_description,<br>
-long_description_content_type=&quot;text/markdown&quot;,<br>
-url=&quot;https://github.com/pypa/sampleproject&quot;,<br>
-packages=setuptools.find_packages(),<br>
-classifiers=[<br>
-&quot;Programming Language :: Python :: 3&quot;,<br>
-&quot;License :: OSI Approved :: MIT License&quot;,  #开源许可<br>
-&quot;Operating System :: OS Independent&quot;,<br>
-],<br>
-)</p>
-<pre><code>&lt;p&gt;创建README.md，写入项目详细信息（Markdown格式），创建licence.md，写入开源许可证内容&lt;/p&gt;
-&lt;p&gt;CMD cd到库文件夹，输入以下指令（注意，最后一步会要求输入Pypi账号密码）：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;python setup.py sdist bdist_wheel
-python twine upload dist/*
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&quot;测试安装库&quot;&gt;测试安装库&lt;/h2&gt;
-&lt;p&gt;CMD输入指令&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;pip install 库名
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;如果安装成功了，就说明我们的库上传成功了&lt;/p&gt;
-&lt;p&gt;https://zhuanlan.zhihu.com/p/60836179&lt;/p&gt;</code></pre>
+<pre><code>import setuptools
 
+with open(&quot;README.md&quot;, &quot;r&quot;) as fh:
+  long_description = fh.read()
+
+setuptools.setup(
+  name=&quot;库名&quot;,
+  version=&quot;版本&quot;,
+  author=&quot;作者&quot;,
+  author_email=&quot;邮箱&quot;,
+  description=&quot;简介&quot;,
+  long_description=long_description,
+  long_description_content_type=&quot;text/markdown&quot;,
+  url=&quot;https://github.com/pypa/sampleproject&quot;,
+  packages=setuptools.find_packages(),
+  classifiers=[
+  &quot;Programming Language :: Python :: 3&quot;,
+  &quot;License :: OSI Approved :: MIT License&quot;,  #开源许可
+  &quot;Operating System :: OS Independent&quot;,
+  ],
+)
+</code></pre>
+<p>创建README.md，写入项目详细信息（Markdown格式），创建licence.md，写入开源许可证内容</p>
+<p>CMD cd到库文件夹，输入以下指令（注意，最后一步会要求输入Pypi账号密码）：</p>
+<pre><code>python setup.py sdist bdist_wheel
+python twine upload dist/*
+</code></pre>
+<h2 id="测试安装库">测试安装库</h2>
+<p>CMD输入指令</p>
+<pre><code>pip install 库名
+</code></pre>
+<p>如果安装成功了，就说明我们的库上传成功了</p>
+<p>https://zhuanlan.zhihu.com/p/60836179</p>
               </div>
               <div class="toc-container">
                 
