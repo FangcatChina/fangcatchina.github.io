@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fangcatchina.github.io/</id>
     <title>Gridea</title>
-    <updated>2021-03-01T12:12:14.387Z</updated>
+    <updated>2021-03-01T12:16:53.791Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fangcatchina.github.io/"/>
     <link rel="self" href="https://fangcatchina.github.io/atom.xml"/>
@@ -12,8 +12,8 @@
     <rights>All rights reserved 2021, Gridea</rights>
     <entry>
         <title type="html"><![CDATA[PYTHON——创作自己的库（知乎转载，有改动，仅适用于WINDOWS）]]></title>
-        <id>https://fangcatchina.github.io/post/python-chuang-zuo-zi-ji-de-ku-zhi-hu-zhuan-zai-you-gai-dong-jin-gua-yong-yu-windows/</id>
-        <link href="https://fangcatchina.github.io/post/python-chuang-zuo-zi-ji-de-ku-zhi-hu-zhuan-zai-you-gai-dong-jin-gua-yong-yu-windows/">
+        <id>https://fangcatchina.github.io/post/python-package/</id>
+        <link href="https://fangcatchina.github.io/post/python-package/">
         </link>
         <updated>2021-03-01T12:11:50.000Z</updated>
         <content type="html"><![CDATA[<h2 id="准备工作">准备工作</h2>
@@ -27,37 +27,38 @@ http://pypi.org</p>
 <p>不再赘述</p>
 <h2 id="打包并上传">打包并上传</h2>
 <p>在文件夹下创建setup.py，并写入以下代码</p>
-<pre><code>import setuptools
-<p>with open(&quot;README.md&quot;, &quot;r&quot;,encoding='utf-8') as fh:<br>
+```
+import setuptools
+<p>with open(&quot;README.md&quot;, &quot;r&quot;) as fh:<br>
 long_description = fh.read()</p>
 <p>setuptools.setup(<br>
 name=&quot;库名&quot;,<br>
-version=&quot;版本号&quot;,<br>
+version=&quot;版本&quot;,<br>
 author=&quot;作者&quot;,<br>
 author_email=&quot;邮箱&quot;,<br>
 description=&quot;简介&quot;,<br>
 long_description=long_description,<br>
 long_description_content_type=&quot;text/markdown&quot;,<br>
-url=&quot;项目地址&quot;,<br>
+url=&quot;https://github.com/pypa/sampleproject&quot;,<br>
 packages=setuptools.find_packages(),<br>
 classifiers=[<br>
-&quot;Programming Language :: Python :: 3&quot;,  #Python版本<br>
-&quot;License :: OSI Approved :: MIT License&quot;,  #开源协议<br>
+&quot;Programming Language :: Python :: 3&quot;,<br>
+&quot;License :: OSI Approved :: MIT License&quot;,  #开源许可<br>
 &quot;Operating System :: OS Independent&quot;,<br>
 ],<br>
-)<br>
-</code></pre></p>
-<p>创建README.md，写入项目详细信息（Markdown格式），创建licence.md，写入开源许可证内容</p>
-<p>CMD cd到库文件夹，输入以下指令（注意，最后一步会要求输入Pypi账号密码）：</p>
-<pre><code>python setup.py sdist bdist_wheel
+)</p>
+<pre><code>&lt;p&gt;创建README.md，写入项目详细信息（Markdown格式），创建licence.md，写入开源许可证内容&lt;/p&gt;
+&lt;p&gt;CMD cd到库文件夹，输入以下指令（注意，最后一步会要求输入Pypi账号密码）：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;python setup.py sdist bdist_wheel
 python twine upload dist/*
-</code></pre>
-<h2 id="测试安装库">测试安装库</h2>
-<p>CMD输入指令</p>
-<pre><code>pip install 库名
-</code></pre>
-<p>如果安装成功了，就说明我们的库上传成功了</p>
-<p>https://zhuanlan.zhihu.com/p/60836179</p>]]></content>
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;测试安装库&quot;&gt;测试安装库&lt;/h2&gt;
+&lt;p&gt;CMD输入指令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pip install 库名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果安装成功了，就说明我们的库上传成功了&lt;/p&gt;
+&lt;p&gt;https://zhuanlan.zhihu.com/p/60836179&lt;/p&gt;</code></pre>
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>

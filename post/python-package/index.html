@@ -2,24 +2,20 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于 | Gridea</title>
+<title>PYTHON——创作自己的库（知乎转载，有改动，仅适用于WINDOWS） | Gridea</title>
 <link rel="shortcut icon" href="https://fangcatchina.github.io//favicon.ico?v=1614601010310">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://fangcatchina.github.io//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="关于 | Gridea - Atom Feed" href="https://fangcatchina.github.io//atom.xml">
+<link rel="alternate" type="application/atom+xml" title="PYTHON——创作自己的库（知乎转载，有改动，仅适用于WINDOWS） | Gridea - Atom Feed" href="https://fangcatchina.github.io//atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="
-欢迎来到我的小站呀，很高兴遇见你！🤝
-
-🏠 关于本站
-👨‍💻 博主是谁
-⛹ 兴趣爱好
-📬 联系我呀
-..." />
-    <meta name="keywords" content="" />
+    <meta name="description" content="准备工作
+必须安装Python3，并确保可以使用pip工具！下方代码请在CMD中执行：
+pip install --user --upgrade setuptools wheel
+pip install --user --upgrade t..." />
+    <meta name="keywords" content="Python,Gridea" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -81,46 +77,88 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              关于
+              PYTHON——创作自己的库（知乎转载，有改动，仅适用于WINDOWS）
             </h2>
             <div class="post-info">
               <span>
-                2019-01-25
+                2021-03-01
               </span>
               <span>
-                1 min read
+                2 min read
               </span>
+              
+                <a href="https://fangcatchina.github.io/tag/23Jopl5WA/" class="post-tag">
+                  # Python
+                </a>
+              
+                <a href="https://fangcatchina.github.io/tag/TXmANHfeA/" class="post-tag">
+                  # Gridea
+                </a>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
+                <h2 id="准备工作">准备工作</h2>
+<p>必须安装Python3，并确保可以使用pip工具！下方代码请在CMD中执行：</p>
+<pre><code>pip install --user --upgrade setuptools wheel
+pip install --user --upgrade twine
+</code></pre>
+<p>注册Pypi账号<br>
+http://pypi.org</p>
+<h2 id="编写python库程序单独文件夹中">编写Python库程序（单独文件夹中）</h2>
+<p>不再赘述</p>
+<h2 id="打包并上传">打包并上传</h2>
+<p>在文件夹下创建setup.py，并写入以下代码</p>
+```
+import setuptools
+<p>with open(&quot;README.md&quot;, &quot;r&quot;) as fh:<br>
+long_description = fh.read()</p>
+<p>setuptools.setup(<br>
+name=&quot;库名&quot;,<br>
+version=&quot;版本&quot;,<br>
+author=&quot;作者&quot;,<br>
+author_email=&quot;邮箱&quot;,<br>
+description=&quot;简介&quot;,<br>
+long_description=long_description,<br>
+long_description_content_type=&quot;text/markdown&quot;,<br>
+url=&quot;https://github.com/pypa/sampleproject&quot;,<br>
+packages=setuptools.find_packages(),<br>
+classifiers=[<br>
+&quot;Programming Language :: Python :: 3&quot;,<br>
+&quot;License :: OSI Approved :: MIT License&quot;,  #开源许可<br>
+&quot;Operating System :: OS Independent&quot;,<br>
+],<br>
+)</p>
+<pre><code>&lt;p&gt;创建README.md，写入项目详细信息（Markdown格式），创建licence.md，写入开源许可证内容&lt;/p&gt;
+&lt;p&gt;CMD cd到库文件夹，输入以下指令（注意，最后一步会要求输入Pypi账号密码）：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;python setup.py sdist bdist_wheel
+python twine upload dist/*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;测试安装库&quot;&gt;测试安装库&lt;/h2&gt;
+&lt;p&gt;CMD输入指令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pip install 库名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果安装成功了，就说明我们的库上传成功了&lt;/p&gt;
+&lt;p&gt;https://zhuanlan.zhihu.com/p/60836179&lt;/p&gt;</code></pre>
 
               </div>
               <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99">🏠 关于本站</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
-</ul>
-</li>
-</ul>
-
+                
               </div>
             </div>
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://fangcatchina.github.io/post/hello-gridea/">
+              <h3 class="post-title">
+                Hello Gridea
+              </h3>
+            </a>
+          </div>
         
 
         
