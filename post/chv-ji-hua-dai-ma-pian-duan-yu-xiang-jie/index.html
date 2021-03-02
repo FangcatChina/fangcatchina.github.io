@@ -2,23 +2,20 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>关于 | Fangcat博客</title>
+<title>Chv计划代码片段与详解 | Fangcat博客</title>
 <link rel="shortcut icon" href="https://fangcatchina.github.io//favicon.ico?v=1614686562031">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://fangcatchina.github.io//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="关于 | Fangcat博客 - Atom Feed" href="https://fangcatchina.github.io//atom.xml">
+<link rel="alternate" type="application/atom+xml" title="Chv计划代码片段与详解 | Fangcat博客 - Atom Feed" href="https://fangcatchina.github.io//atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="
-欢迎来到我的小站呀，很高兴遇见你！🤝
-
-🏠 关于本站
-👨‍💻 博主是谁
-⛹ 兴趣爱好
-📬 联系我呀
-..." />
+    <meta name="description" content="什么是Chv计划？
+Chv计划是我为了使用户更容易地自己创建应用（无需再创作，未来实现程序保存功能）而编写的语言。只有在Chiver与FCXOS中使用，暂时还未开放使用（三月下旬开启内测）。
+Chv计划预API
+1.output
+outpu..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -81,11 +78,11 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              关于
+              Chv计划代码片段与详解
             </h2>
             <div class="post-info">
               <span>
-                2019-01-25
+                2021-03-02
               </span>
               <span>
                 1 min read
@@ -95,23 +92,50 @@
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
+                <h2 id="什么是chv计划">什么是Chv计划？</h2>
+<p>Chv计划是我为了使用户更容易地自己创建应用（无需再创作，未来实现程序保存功能）而编写的语言。只有在Chiver与FCXOS中使用，暂时还未开放使用（三月下旬开启内测）。</p>
+<h2 id="chv计划预api">Chv计划预API</h2>
+<h3 id="1output">1.output</h3>
+<p><code>output [内容]</code><br>
+输出指定内容。</p>
+<h3 id="2ask">2.ask</h3>
+<p><code>ask [问题]</code><br>
+询问用户问题，返回值存入<code>get</code>。</p>
+<h3 id="1-1-代码示例">1-1 代码示例</h3>
+<pre><code>output Hello,Chvlang!
+ask What's your name?
+output get
+</code></pre>
+<p>###3.getout分隔符<br>
+<code>getout</code><br>
+完成循环或选择片段（相当于Python中的缩进）。</p>
+<h3 id="4if">4.if</h3>
+<p><code>if [条件]</code><br>
+如果条件成立，执行下面的代码（被'getout'分割）。</p>
+<h3 id="3-4-代码示例">3-4 代码示例</h3>
+<pre><code>ask Enter-1
+if get = 1
+output You-entered-1
+getout
+output OK
+</code></pre>
+<p>这段代码表示如果获得的答复是1，那么输出You-entered-1，否则不输出，不管是否输入了1，最后输出OK。</p>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99">🏠 关于本站</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AFchv%E8%AE%A1%E5%88%92">什么是Chv计划？</a></li>
+<li><a href="#chv%E8%AE%A1%E5%88%92%E9%A2%84api">Chv计划预API</a>
+<ul>
+<li><a href="#1output">1.output</a></li>
+<li><a href="#2ask">2.ask</a></li>
+<li><a href="#1-1-%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B">1-1 代码示例</a></li>
+<li><a href="#4if">4.if</a></li>
+<li><a href="#3-4-%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B">3-4 代码示例</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -121,6 +145,15 @@
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://fangcatchina.github.io/post/python-package/">
+              <h3 class="post-title">
+                PYTHON——创作自己的库（知乎转载，有改动，仅适用于WINDOWS）
+              </h3>
+            </a>
+          </div>
         
 
         

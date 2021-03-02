@@ -1,15 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fangcatchina.github.io/</id>
-    <title>Gridea</title>
-    <updated>2021-03-01T12:19:10.916Z</updated>
+    <title>Fangcat博客</title>
+    <updated>2021-03-02T12:02:44.366Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fangcatchina.github.io/"/>
     <link rel="self" href="https://fangcatchina.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>Python/Scratch/Kitten/Nemo</subtitle>
     <logo>https://fangcatchina.github.io/images/avatar.png</logo>
     <icon>https://fangcatchina.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, Gridea</rights>
+    <rights>All rights reserved 2021, Fangcat博客</rights>
+    <entry>
+        <title type="html"><![CDATA[Chv计划代码片段与详解]]></title>
+        <id>https://fangcatchina.github.io/post/chv-ji-hua-dai-ma-pian-duan-yu-xiang-jie/</id>
+        <link href="https://fangcatchina.github.io/post/chv-ji-hua-dai-ma-pian-duan-yu-xiang-jie/">
+        </link>
+        <updated>2021-03-02T11:41:07.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="什么是chv计划">什么是Chv计划？</h2>
+<p>Chv计划是我为了使用户更容易地自己创建应用（无需再创作，未来实现程序保存功能）而编写的语言。只有在Chiver与FCXOS中使用，暂时还未开放使用（三月下旬开启内测）。</p>
+<h2 id="chv计划预api">Chv计划预API</h2>
+<h3 id="1output">1.output</h3>
+<p><code>output [内容]</code><br>
+输出指定内容。</p>
+<h3 id="2ask">2.ask</h3>
+<p><code>ask [问题]</code><br>
+询问用户问题，返回值存入<code>get</code>。</p>
+<h3 id="1-1-代码示例">1-1 代码示例</h3>
+<pre><code>output Hello,Chvlang!
+ask What's your name?
+output get
+</code></pre>
+<p>###3.getout分隔符<br>
+<code>getout</code><br>
+完成循环或选择片段（相当于Python中的缩进）。</p>
+<h3 id="4if">4.if</h3>
+<p><code>if [条件]</code><br>
+如果条件成立，执行下面的代码（被'getout'分割）。</p>
+<h3 id="3-4-代码示例">3-4 代码示例</h3>
+<pre><code>ask Enter-1
+if get = 1
+output You-entered-1
+getout
+output OK
+</code></pre>
+<p>这段代码表示如果获得的答复是1，那么输出You-entered-1，否则不输出，不管是否输入了1，最后输出OK。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[PYTHON——创作自己的库（知乎转载，有改动，仅适用于WINDOWS）]]></title>
         <id>https://fangcatchina.github.io/post/python-package/</id>
