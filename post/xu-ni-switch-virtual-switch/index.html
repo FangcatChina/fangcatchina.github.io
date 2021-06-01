@@ -2,20 +2,18 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>PYTHON——创作自己的库（知乎转载，有改动，仅适用于WINDOWS） | Fangcat博客</title>
+<title>虚拟Switch——Virtual Switch! | Fangcat博客</title>
 <link rel="shortcut icon" href="https://fangcatchina.github.io//favicon.ico?v=1622546450250">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://fangcatchina.github.io//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="PYTHON——创作自己的库（知乎转载，有改动，仅适用于WINDOWS） | Fangcat博客 - Atom Feed" href="https://fangcatchina.github.io//atom.xml">
+<link rel="alternate" type="application/atom+xml" title="虚拟Switch——Virtual Switch! | Fangcat博客 - Atom Feed" href="https://fangcatchina.github.io//atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="准备工作
-必须安装Python3，并确保可以使用pip工具！下方代码请在CMD中执行：
-pip install --user --upgrade setuptools wheel
-pip install --user --upgrade t..." />
-    <meta name="keywords" content="Python,Gridea" />
+    <meta name="description" content="戳链接：fcnemo.gitee.io/n/viswitch
+" />
+    <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -77,72 +75,22 @@ pip install --user --upgrade t..." />
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              PYTHON——创作自己的库（知乎转载，有改动，仅适用于WINDOWS）
+              虚拟Switch——Virtual Switch!
             </h2>
             <div class="post-info">
               <span>
-                2021-03-01
+                2021-06-01
               </span>
               <span>
-                2 min read
+                1 min read
               </span>
-              
-                <a href="https://fangcatchina.github.io/tag/23Jopl5WA/" class="post-tag">
-                  # Python
-                </a>
-              
-                <a href="https://fangcatchina.github.io/tag/TXmANHfeA/" class="post-tag">
-                  # Gridea
-                </a>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h2 id="准备工作">准备工作</h2>
-<p>必须安装Python3，并确保可以使用pip工具！下方代码请在CMD中执行：</p>
-<pre><code>pip install --user --upgrade setuptools wheel
-pip install --user --upgrade twine
-</code></pre>
-<p>注册Pypi账号<br>
-http://pypi.org</p>
-<h2 id="编写python库程序单独文件夹中">编写Python库程序（单独文件夹中）</h2>
-<p>不再赘述</p>
-<h2 id="打包并上传">打包并上传</h2>
-<p>在文件夹下创建setup.py，并写入以下代码</p>
-<pre><code>import setuptools
+                <p>戳链接：fcnemo.gitee.io/n/viswitch</p>
 
-with open(&quot;README.md&quot;, &quot;r&quot;) as fh:
-  long_description = fh.read()
-
-setuptools.setup(
-  name=&quot;库名&quot;,
-  version=&quot;版本&quot;,
-  author=&quot;作者&quot;,
-  author_email=&quot;邮箱&quot;,
-  description=&quot;简介&quot;,
-  long_description=long_description,
-  long_description_content_type=&quot;text/markdown&quot;,
-  url=&quot;https://github.com/pypa/sampleproject&quot;,
-  packages=setuptools.find_packages(),
-  classifiers=[
-  &quot;Programming Language :: Python :: 3&quot;,
-  &quot;License :: OSI Approved :: MIT License&quot;,  #开源许可
-  &quot;Operating System :: OS Independent&quot;,
-  ],
-)
-</code></pre>
-<p>创建README.md，写入项目详细信息（Markdown格式），创建licence.md，写入开源许可证内容</p>
-<p>CMD cd到库文件夹，输入以下指令（注意，最后一步会要求输入Pypi账号密码）：</p>
-<pre><code>python setup.py sdist bdist_wheel
-python twine upload dist/*
-</code></pre>
-<h2 id="测试安装库">测试安装库</h2>
-<p>CMD输入指令</p>
-<pre><code>pip install 库名
-</code></pre>
-<p>如果安装成功了，就说明我们的库上传成功了</p>
-<p>https://zhuanlan.zhihu.com/p/60836179</p>
               </div>
               <div class="toc-container">
                 
@@ -154,9 +102,9 @@ python twine upload dist/*
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://fangcatchina.github.io/post/hello-gridea/">
+            <a href="https://fangcatchina.github.io/post/chv-ji-hua-dai-ma-pian-duan-yu-xiang-jie/">
               <h3 class="post-title">
-                Hello Gridea
+                Chv计划代码片段与详解
               </h3>
             </a>
           </div>
