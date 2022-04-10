@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://fcnemo.gitee.io/blog</id>
+    <id>https://fangcatchina.github.io</id>
     <title>Fangcat博客</title>
-    <updated>2022-04-10T01:38:05.662Z</updated>
+    <updated>2022-04-10T01:47:08.189Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://fcnemo.gitee.io/blog"/>
-    <link rel="self" href="https://fcnemo.gitee.io/blog/atom.xml"/>
+    <link rel="alternate" href="https://fangcatchina.github.io"/>
+    <link rel="self" href="https://fangcatchina.github.io/atom.xml"/>
     <subtitle>Python/Scratch/Kitten/Nemo</subtitle>
-    <logo>https://fcnemo.gitee.io/blog/images/avatar.png</logo>
-    <icon>https://fcnemo.gitee.io/blog/favicon.ico</icon>
+    <logo>https://fangcatchina.github.io/images/avatar.png</logo>
+    <icon>https://fangcatchina.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, Fangcat博客</rights>
     <entry>
         <title type="html"><![CDATA[虚拟Switch——Virtual Switch!]]></title>
-        <id>https://fcnemo.gitee.io/blog/post/xu-ni-switch-virtual-switch/</id>
-        <link href="https://fcnemo.gitee.io/blog/post/xu-ni-switch-virtual-switch/">
+        <id>https://fangcatchina.github.io/post/xu-ni-switch-virtual-switch/</id>
+        <link href="https://fangcatchina.github.io/post/xu-ni-switch-virtual-switch/">
         </link>
         <updated>2021-06-01T11:20:08.000Z</updated>
         <content type="html"><![CDATA[<p>戳链接：fcnemo.gitee.io/n/virswitch</p>
@@ -21,8 +21,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[PYTHON——创作自己的库（知乎转载，有改动，仅适用于WINDOWS）]]></title>
-        <id>https://fcnemo.gitee.io/blog/post/python-package/</id>
-        <link href="https://fcnemo.gitee.io/blog/post/python-package/">
+        <id>https://fangcatchina.github.io/post/python-package/</id>
+        <link href="https://fangcatchina.github.io/post/python-package/">
         </link>
         <updated>2021-03-01T12:11:50.000Z</updated>
         <content type="html"><![CDATA[<h2 id="准备工作">准备工作</h2>
@@ -72,8 +72,8 @@ python twine upload dist/*
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://fcnemo.gitee.io/blog/post/hello-gridea/</id>
-        <link href="https://fcnemo.gitee.io/blog/post/hello-gridea/">
+        <id>https://fangcatchina.github.io/post/hello-gridea/</id>
+        <link href="https://fangcatchina.github.io/post/hello-gridea/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
