@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fangcatchina.github.io</id>
     <title>Fangcat博客</title>
-    <updated>2022-04-11T06:00:59.674Z</updated>
+    <updated>2022-04-11T06:13:47.419Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fangcatchina.github.io"/>
     <link rel="self" href="https://fangcatchina.github.io/atom.xml"/>
@@ -24,7 +24,7 @@
 pip install --user --upgrade twine
 </code></pre>
 <h2 id="注册pypi账号">注册Pypi账号</h2>
-<p>http://pypi.org</p>
+<p><a href="http://pypi.org">http://pypi.org</a></p>
 <h2 id="编写python库程序单独文件夹中">编写Python库程序（单独文件夹中）##</h2>
 <p>不再赘述</p>
 <h2 id="打包并上传">打包并上传</h2>
@@ -61,7 +61,7 @@ python twine upload dist/*
 <pre><code>pip install 库名
 </code></pre>
 <p>如果安装成功了，就说明我们的库上传成功了<br>
-原文：<a href="%E6%88%B3%E8%BF%99%E9%87%8C">https://zhuanlan.zhihu.com/p/60836179</a></p>
+原文：<a href="https://zhuanlan.zhihu.com/p/60836179">https://zhuanlan.zhihu.com/p/60836179</a></p>
 ]]></content>
     </entry>
     <entry>
