@@ -7,7 +7,7 @@
 <title>
     方某的博客
 </title>
-<link rel="shortcut icon" href="https://fangcatchina.github.io/favicon.ico?v=1649661602150">
+<link rel="shortcut icon" href="https://fangcatchina.github.io/favicon.ico?v=1649664267216">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://fangcatchina.github.io">
-                <img class="avatar" src="https://fangcatchina.github.io/images/avatar.png?v=1649661602150" alt="">
+                <img class="avatar" src="https://fangcatchina.github.io/images/avatar.png?v=1649664267216" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -99,21 +99,140 @@
         
             <article class="post i-card">
                 <h2 class="post-title">
+                    <a href="https://fangcatchina.github.io/post/kKMXn6xFO/">
+                        Tkinter报错“unknown option &#34;pyimage1/2&#34;”的解决办法
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2022-04-11</time>
+                    
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            问题概述
+在Label中放置PhotoImage时报错：
+Traceback (most recent call last):
+  File &amp;quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&amp;quot;, line 1921, in __call__
+    return self.func(*args)
+  File &amp;quot;f:\Windows\桌面\tst.py&amp;quot;, line 7, in newwindow
+    l = Label(anotherwindow,image=img)
+  File &amp;quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&amp;quot;, line 3177, in __init__
+    Widget.__init__(self, master, &#39;label&#39;, cnf, kw)
+  File &amp;quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&amp;quot;, line 2601, in __init__
+    self.tk.call(
+_tkinter.TclError: image &amp;quot;pyimage1&amp;quot; doesn&#39;t exist
+
+代码如下：
+from tkinter import *
+root = Tk()
+def newwindow():
+    global anotherwindow
+    anotherwindow = Tk()
+    img = PhotoImage(file=&amp;quot;image.png&amp;quot;)
+    l = Label(anotherwindow,image=img)
+    l.pack()
+    anotherwindow.mainloop()
+bu = Button(root,text=&amp;quot;你过来呀&amp;quot;,command=newwindow)
+bu.pack()
+root.mainloop()
+
+解决过程
+第一种办法：将PhotoImage的定义挪到函数外
+修改为：
+from tkinter import *
+root = Tk()
+img = PhotoImage(file=&amp;quot;image.png&amp;quot;)
+def newwindow():
+    global anotherwindow,img
+    anotherwindow = Tk()
+    l = Label(anotherwindow,image=img)
+    l.pack()
+    anotherwindow.mainloop()
+bu = Button(root,text=&amp;quot;你过来呀&amp;quot;,command=newwindow)
+bu.pack()
+root.mainloop()
+
+结果依然报错：
+Traceback (most recent call last):
+  File &amp;quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&amp;quot;, line 1921, in __call__
+    return self.func(*args)
+  File &amp;quot;f:\Windows\桌面\tst.py&amp;quot;, line 7, in newwindow
+    l = Label(anotherwindow,image=img)
+  File &amp;quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&amp;quot;, line 3177, in __init__
+    Widget.__init__(self, master, &#39;label&#39;, cnf, kw)
+  File &amp;quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&amp;quot;, line 2601, in __init__
+    self.tk.call(
+_tkinter.TclError: image &amp;quot;pyimage1&amp;quot; doesn&#39;t exist
+
+为什么呢？这就要用到第二种办法了
+第二种办法：子窗口改用Toplevel（基于第一种方法）
+修改为：
+from tkinter import *
+root = Tk()
+img = PhotoImage(file=&amp;quot;image.png&amp;quot;)
+def newwindow():
+    global anotherwindow,img
+    anotherwindow = Toplevel()
+    l = Label(anotherwindow,image=img)
+    l.pack()
+bu = Button(root,text=&amp;quot;你过来呀&amp;quot;,command=newwindow)
+bu.pack()
+root.mainloop()
+
+终于不报错了！
+其实还有一个方法
+第三种方法：将Label放入Frame或LabelFrame中（基于第一种方法）
+这种办法不适合这种情景，让我们换一个：
+starting = Tk()
+starting.after(3000,starting.destroy)
+starting.mainloop()
+cfgfinished = False
+configure = Tk()
+BG = PhotoImage(file=&amp;quot;background\iMac 2021 Green_1.png&amp;quot;)
+bgl = Label(configure,image=BG)
+bgl.pack()
+configure.mainloop()
+
+不知道为啥，已经distroy了依然报错
+我们改成这样：
+starting = Tk()
+starting.after(3000,starting.destroy)
+starting.mainloop()
+cfgfinished = False
+configure = Tk()
+fr = Frame(configure)
+fr.place(x=0,y=0)
+BG = PhotoImage(file=&amp;quot;background\iMac 2021 Green_1.png&amp;quot;)
+bgl = Label(fr,image=BG)
+bgl.pack()
+configure.mainloop()
+
+
+小结
+遇到“unknown option &amp;quot;pyimage1/2&amp;quot;”时，首先检查PhotoImage是否定义在函数内（最最最重要），再将根窗口内mainloop过程中的其他窗口统统改为Toplevel，如果还不行，就把Label放到随便一个框架里。
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://fangcatchina.github.io/post/kKMXn6xFO/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
                     <a href="https://fangcatchina.github.io/post/python-package/">
-                        PYTHON——创作自己的库
+                        Python库的创建
                     </a>
                 </h2>
                 <div class="post-info">
                     <time class="post-time">2021-03-01</time>
                     
                         <a href="https://fangcatchina.github.io/tag/23Jopl5WA/" class="post-tag i-tag
-                            i-tag-primary">
-            #Python
-        </a>
-                        
-                        <a href="https://fangcatchina.github.io/tag/TXmANHfeA/" class="post-tag i-tag
                             i-tag-">
-            #Gridea
+            #Python
         </a>
                         
                 </div>
@@ -186,7 +305,7 @@ pip install 库名
                     <time class="post-time">2018-12-12</time>
                     
                         <a href="https://fangcatchina.github.io/tag/TXmANHfeA/" class="post-tag i-tag
-                            i-tag-warning">
+                            i-tag-other_4">
             #Gridea
         </a>
                         
@@ -220,7 +339,7 @@ pip install 库名
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://fangcatchina.github.io/images/avatar.png?v=1649661602150)">
+        <div class="id_card-avatar" style="background-image: url(https://fangcatchina.github.io/images/avatar.png?v=1649664267216)">
         </div>
         <h1 class="id_card-title">
             方某的博客
