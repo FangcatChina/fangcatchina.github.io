@@ -7,7 +7,7 @@
 <title>
     Python库的创建 | 方某的博客
 </title>
-<link rel="shortcut icon" href="https://fangcatchina.gitee.io/favicon.ico?v=1649745875225">
+<link rel="shortcut icon" href="https://fangcatchina.gitee.io/favicon.ico?v=1649840951664">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -35,7 +35,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://fangcatchina.gitee.io">
-                <img class="avatar" src="https://fangcatchina.gitee.io/images/avatar.png?v=1649745875225" alt="">
+                <img class="avatar" src="https://fangcatchina.gitee.io/images/avatar.png?v=1649840951664" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -112,12 +112,14 @@
                             <time class="post-time">2021-03-01</time>
                             
                                 <a href="https://fangcatchina.gitee.io/tag/23Jopl5WA/" class="post-tag i-tag
-                            i-tag-other_4">
+                            i-tag-">
                             #Python
                         </a>
                                 
                         </div>
                         
+                            <div class="post-feature-image" style="background-image: url('https://fangcatchina.gitee.io/post-images/python-package.webp')"></div>
+                            
                                 <div class="post-content">
                                     <h1 id="概要">概要</h1>
 <p>最近突发奇想，想用Python做一个库发到Pypi上，就到网上找了一篇教程，下面跟大家分享一下（转载，有较大的改动，原文在文末）</p>
@@ -128,7 +130,7 @@ pip install --user --upgrade twine
 </code></pre>
 <h2 id="注册pypi账号">注册Pypi账号</h2>
 <p><a href="http://pypi.org">http://pypi.org</a></p>
-<h2 id="编写python库程序单独文件夹中">编写Python库程序（单独文件夹中）##</h2>
+<h2 id="编写python库程序单独文件夹中">编写Python库程序（单独文件夹中）</h2>
 <p>不再赘述</p>
 <h2 id="打包并上传">打包并上传</h2>
 <p>在文件夹下创建setup.py，并写入以下代码</p></p>
@@ -197,7 +199,7 @@ python twine upload dist/*
 <ul>
 <li><a href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C">准备工作</a></li>
 <li><a href="#%E6%B3%A8%E5%86%8Cpypi%E8%B4%A6%E5%8F%B7">注册Pypi账号</a></li>
-<li><a href="#%E7%BC%96%E5%86%99python%E5%BA%93%E7%A8%8B%E5%BA%8F%E5%8D%95%E7%8B%AC%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%AD">编写Python库程序（单独文件夹中）##</a></li>
+<li><a href="#%E7%BC%96%E5%86%99python%E5%BA%93%E7%A8%8B%E5%BA%8F%E5%8D%95%E7%8B%AC%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%AD">编写Python库程序（单独文件夹中）</a></li>
 <li><a href="#%E6%89%93%E5%8C%85%E5%B9%B6%E4%B8%8A%E4%BC%A0">打包并上传</a></li>
 <li><a href="#%E6%B5%8B%E8%AF%95%E5%AE%89%E8%A3%85%E5%BA%93">测试安装库</a></li>
 </ul>

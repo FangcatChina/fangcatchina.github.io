@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fangcatchina.gitee.io</id>
     <title>方某的博客</title>
-    <updated>2022-04-12T06:44:37.852Z</updated>
+    <updated>2022-04-13T09:09:14.580Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fangcatchina.gitee.io"/>
     <link rel="self" href="https://fangcatchina.gitee.io/atom.xml"/>
@@ -193,7 +193,7 @@ pip install --user --upgrade twine
 </code></pre>
 <h2 id="注册pypi账号">注册Pypi账号</h2>
 <p><a href="http://pypi.org">http://pypi.org</a></p>
-<h2 id="编写python库程序单独文件夹中">编写Python库程序（单独文件夹中）##</h2>
+<h2 id="编写python库程序单独文件夹中">编写Python库程序（单独文件夹中）</h2>
 <p>不再赘述</p>
 <h2 id="打包并上传">打包并上传</h2>
 <p>在文件夹下创建setup.py，并写入以下代码</p></p>
