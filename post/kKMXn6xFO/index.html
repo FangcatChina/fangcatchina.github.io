@@ -1,0 +1,340 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Tkinter报错“unknown option &#34;pyimage1/2&#34;”的解决办法 | 方某的博客
+</title>
+<link rel="shortcut icon" href="https://oldblog.fc.cloudns.ch/favicon.ico?v=1755439331256">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://oldblog.fc.cloudns.ch/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://oldblog.fc.cloudns.ch/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+            
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+                
+
+                    
+                            
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://oldblog.fc.cloudns.ch">
+                <img class="avatar" src="https://oldblog.fc.cloudns.ch/images/avatar.png?v=1755439331256" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    方某的博客
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            Tkinter报错“unknown option &#34;pyimage1/2&#34;”的解决办法
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2022-04-11</time>
+                            
+                                <a href="https://oldblog.fc.cloudns.ch/tag/23Jopl5WA/" class="post-tag i-tag
+                            i-tag-banana">
+                            #Python
+                        </a>
+                                
+                        </div>
+                        
+                            <div class="post-feature-image" style="background-image: url('https://oldblog.fc.cloudns.ch/post-images/kKMXn6xFO.png')"></div>
+                            
+                                <div class="post-content">
+                                    <h1 id="问题概述">问题概述</h1>
+<p>在Label中放置PhotoImage时报错：</p>
+<pre><code>Traceback (most recent call last):
+  File &quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&quot;, line 1921, in __call__
+    return self.func(*args)
+  File &quot;f:\Windows\桌面\tst.py&quot;, line 7, in newwindow
+    l = Label(anotherwindow,image=img)
+  File &quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&quot;, line 3177, in __init__
+    Widget.__init__(self, master, 'label', cnf, kw)
+  File &quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&quot;, line 2601, in __init__
+    self.tk.call(
+_tkinter.TclError: image &quot;pyimage1&quot; doesn't exist
+</code></pre>
+<p>代码如下：</p>
+<pre><code>from tkinter import *
+root = Tk()
+def newwindow():
+    global anotherwindow
+    anotherwindow = Tk()
+    img = PhotoImage(file=&quot;image.png&quot;)
+    l = Label(anotherwindow,image=img)
+    l.pack()
+    anotherwindow.mainloop()
+bu = Button(root,text=&quot;你过来呀&quot;,command=newwindow)
+bu.pack()
+root.mainloop()
+</code></pre>
+<h1 id="解决过程">解决过程</h1>
+<h2 id="第一种办法将photoimage的定义挪到函数外">第一种办法：将PhotoImage的定义挪到函数外</h2>
+<p>修改为：</p>
+<pre><code>from tkinter import *
+root = Tk()
+img = PhotoImage(file=&quot;image.png&quot;)
+def newwindow():
+    global anotherwindow,img
+    anotherwindow = Tk()
+    l = Label(anotherwindow,image=img)
+    l.pack()
+    anotherwindow.mainloop()
+bu = Button(root,text=&quot;你过来呀&quot;,command=newwindow)
+bu.pack()
+root.mainloop()
+</code></pre>
+<p>结果依然报错：</p>
+<pre><code>Traceback (most recent call last):
+  File &quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&quot;, line 1921, in __call__
+    return self.func(*args)
+  File &quot;f:\Windows\桌面\tst.py&quot;, line 7, in newwindow
+    l = Label(anotherwindow,image=img)
+  File &quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&quot;, line 3177, in __init__
+    Widget.__init__(self, master, 'label', cnf, kw)
+  File &quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&quot;, line 2601, in __init__
+    self.tk.call(
+_tkinter.TclError: image &quot;pyimage1&quot; doesn't exist
+</code></pre>
+<p>为什么呢？这就要用到第二种办法了</p>
+<h2 id="第二种办法子窗口改用toplevel基于第一种方法">第二种办法：子窗口改用Toplevel（基于第一种方法）</h2>
+<p>修改为：</p>
+<pre><code>from tkinter import *
+root = Tk()
+img = PhotoImage(file=&quot;image.png&quot;)
+def newwindow():
+    global anotherwindow,img
+    anotherwindow = Toplevel()
+    l = Label(anotherwindow,image=img)
+    l.pack()
+bu = Button(root,text=&quot;你过来呀&quot;,command=newwindow)
+bu.pack()
+root.mainloop()
+</code></pre>
+<p>终于不报错了！<br>
+其实还有一个方法</p>
+<h2 id="第三种方法将label放入frame或labelframe中基于第一种方法">第三种方法：将Label放入Frame或LabelFrame中（基于第一种方法）</h2>
+<p>这种办法不适合这种情景，让我们换一个：</p>
+<pre><code>starting = Tk()
+starting.after(3000,starting.destroy)
+starting.mainloop()
+cfgfinished = False
+configure = Tk()
+BG = PhotoImage(file=&quot;background\iMac 2021 Green_1.png&quot;)
+bgl = Label(configure,image=BG)
+bgl.pack()
+configure.mainloop()
+</code></pre>
+<p>不知道为啥，已经distroy了依然报错<br>
+我们改成这样：</p>
+<pre><code>starting = Tk()
+starting.after(3000,starting.destroy)
+starting.mainloop()
+cfgfinished = False
+configure = Tk()
+fr = Frame(configure)
+fr.place(x=0,y=0)
+BG = PhotoImage(file=&quot;background\iMac 2021 Green_1.png&quot;)
+bgl = Label(fr,image=BG)
+bgl.pack()
+configure.mainloop()
+</code></pre>
+<hr>
+<h1 id="小结">小结</h1>
+<p>遇到“unknown option &quot;pyimage1/2&quot;”时，首先检查PhotoImage是否定义在函数内（最最最重要），再将根窗口内mainloop过程中的其他窗口统统改为Toplevel，如果还不行，就把Label放到随便一个框架里。</p>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://oldblog.fc.cloudns.ch/post/python-package/">
+                                <h3 class="post-title">
+                                    Python库的创建
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li><a href="#%E9%97%AE%E9%A2%98%E6%A6%82%E8%BF%B0">问题概述</a></li>
+<li><a href="#%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B">解决过程</a>
+<ul>
+<li><a href="#%E7%AC%AC%E4%B8%80%E7%A7%8D%E5%8A%9E%E6%B3%95%E5%B0%86photoimage%E7%9A%84%E5%AE%9A%E4%B9%89%E6%8C%AA%E5%88%B0%E5%87%BD%E6%95%B0%E5%A4%96">第一种办法：将PhotoImage的定义挪到函数外</a></li>
+<li><a href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D%E5%8A%9E%E6%B3%95%E5%AD%90%E7%AA%97%E5%8F%A3%E6%94%B9%E7%94%A8toplevel%E5%9F%BA%E4%BA%8E%E7%AC%AC%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95">第二种办法：子窗口改用Toplevel（基于第一种方法）</a></li>
+<li><a href="#%E7%AC%AC%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95%E5%B0%86label%E6%94%BE%E5%85%A5frame%E6%88%96labelframe%E4%B8%AD%E5%9F%BA%E4%BA%8E%E7%AC%AC%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95">第三种方法：将Label放入Frame或LabelFrame中（基于第一种方法）</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B0%8F%E7%BB%93">小结</a></li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  友情链接： <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> and <a href="https://github.com" target="_blank">Github</a> | 
+  <a class="rss" href="https://oldblog.fc.cloudns.ch/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+        
+            <script>
+    window.onload = function() {
+        var gitalk = new Gitalk({
+            clientID: '21d7fb822b4454e44d82',
+            clientSecret: '91c0a72f04b7fa82c597d9aa098a40e26b6f1c6e',
+            repo: 'Comment',
+            owner: 'FangcatChina',
+            admin: ['FangcatChina'],
+            id: (location.pathname).substring(0, 49), // Ensure uniqueness and length less than 50
+            distractionFreeMode: false // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    }
+</script>
+                
+
+                    
+                                
+</body>
+
+</html>

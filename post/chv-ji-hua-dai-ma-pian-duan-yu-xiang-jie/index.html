@@ -1,0 +1,258 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Chv计划代码片段与详解 | 方某的博客
+</title>
+<link rel="shortcut icon" href="https://oldblog.fc.cloudns.ch/favicon.ico?v=1755439331256">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://oldblog.fc.cloudns.ch/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://oldblog.fc.cloudns.ch/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+            
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+                
+
+                    
+                            
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://oldblog.fc.cloudns.ch">
+                <img class="avatar" src="https://oldblog.fc.cloudns.ch/images/avatar.png?v=1755439331256" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    方某的博客
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            Chv计划代码片段与详解
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2021-03-02</time>
+                            
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h1 id="本文章已失效-chv计划已经取消">本文章已失效！！  Chv计划已经取消</h1>
+<h2 id="什么是chv计划">什么是Chv计划？</h2>
+<p>Chv计划是我为了使用户更容易地自己创建应用（无需再创作，未来实现程序保存功能）而编写的语言。只有在Chiver与FCXOS中使用，暂时还未开放使用（三月下旬开启内测）。</p>
+<h2 id="chv计划预api">Chv计划预API</h2>
+<h3 id="1output">1.output</h3>
+<p><code>output [内容]</code><br>
+输出指定内容。</p>
+<h3 id="2ask">2.ask</h3>
+<p><code>ask [问题]</code><br>
+询问用户问题，返回值存入<code>get</code>。</p>
+<h3 id="1-1-代码示例">1-1 代码示例</h3>
+<pre><code>output Hello,Chvlang!
+ask What's your name?
+output get
+</code></pre>
+<h3 id="3getout分隔符">3.getout分隔符</h3>
+<p><code>getout</code><br>
+完成循环或选择片段（相当于Python中的缩进）。</p>
+<h3 id="4if">4.if</h3>
+<p><code>if [条件]</code><br>
+如果条件成立，执行下面的代码（被'getout'分割）。</p>
+<h3 id="3-4-代码示例">3-4 代码示例</h3>
+<pre><code>ask Enter-1
+if get = 1
+output You-entered-1
+getout
+output OK
+</code></pre>
+<p>这段代码表示如果获得的答复是1，那么输出You-entered-1，否则不输出，不管是否输入了1，最后输出OK。</p>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li><a href="#%E6%9C%AC%E6%96%87%E7%AB%A0%E5%B7%B2%E5%A4%B1%E6%95%88-chv%E8%AE%A1%E5%88%92%E5%B7%B2%E7%BB%8F%E5%8F%96%E6%B6%88">本文章已失效！！  Chv计划已经取消</a>
+<ul>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AFchv%E8%AE%A1%E5%88%92">什么是Chv计划？</a></li>
+<li><a href="#chv%E8%AE%A1%E5%88%92%E9%A2%84api">Chv计划预API</a>
+<ul>
+<li><a href="#1output">1.output</a></li>
+<li><a href="#2ask">2.ask</a></li>
+<li><a href="#1-1-%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B">1-1 代码示例</a></li>
+<li><a href="#3getout%E5%88%86%E9%9A%94%E7%AC%A6">3.getout分隔符</a></li>
+<li><a href="#4if">4.if</a></li>
+<li><a href="#3-4-%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B">3-4 代码示例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  友情链接： <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> and <a href="https://github.com" target="_blank">Github</a> | 
+  <a class="rss" href="https://oldblog.fc.cloudns.ch/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+        
+            <script>
+    window.onload = function() {
+        var gitalk = new Gitalk({
+            clientID: '21d7fb822b4454e44d82',
+            clientSecret: '91c0a72f04b7fa82c597d9aa098a40e26b6f1c6e',
+            repo: 'Comment',
+            owner: 'FangcatChina',
+            admin: ['FangcatChina'],
+            id: (location.pathname).substring(0, 49), // Ensure uniqueness and length less than 50
+            distractionFreeMode: false // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    }
+</script>
+                
+
+                    
+                                
+</body>
+
+</html>

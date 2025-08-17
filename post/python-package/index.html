@@ -1,0 +1,285 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Python库的创建 | 方某的博客
+</title>
+<link rel="shortcut icon" href="https://oldblog.fc.cloudns.ch/favicon.ico?v=1755439331256">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://oldblog.fc.cloudns.ch/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://oldblog.fc.cloudns.ch/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+        
+            
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+                
+
+                    
+                            
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://oldblog.fc.cloudns.ch">
+                <img class="avatar" src="https://oldblog.fc.cloudns.ch/images/avatar.png?v=1755439331256" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    方某的博客
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            Python库的创建
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2021-03-01</time>
+                            
+                                <a href="https://oldblog.fc.cloudns.ch/tag/23Jopl5WA/" class="post-tag i-tag
+                            i-tag-warning">
+                            #Python
+                        </a>
+                                
+                        </div>
+                        
+                            <div class="post-feature-image" style="background-image: url('https://oldblog.fc.cloudns.ch/post-images/python-package.webp')"></div>
+                            
+                                <div class="post-content">
+                                    <h1 id="概要">概要</h1>
+<p>最近突发奇想，想用Python做一个库发到Pypi上，就到网上找了一篇教程，下面跟大家分享一下（转载，有较大的改动，原文在文末）</p>
+<h2 id="准备工作">准备工作</h2>
+<p>必须安装Python3，并确保可以使用pip工具！CMD中执行：</p>
+<pre><code>pip install --user --upgrade setuptools wheel
+pip install --user --upgrade twine
+</code></pre>
+<h2 id="注册pypi账号">注册Pypi账号</h2>
+<p><a href="http://pypi.org">http://pypi.org</a></p>
+<h2 id="编写python库程序单独文件夹中">编写Python库程序（单独文件夹中）</h2>
+<p>不再赘述</p>
+<h2 id="打包并上传">打包并上传</h2>
+<p>在文件夹下创建setup.py，并写入以下代码</p></p>
+<pre><code>import setuptools
+
+with open(&quot;README.md&quot;, &quot;r&quot;) as fh:
+  long_description = fh.read()
+
+setuptools.setup(
+  name=&quot;库名&quot;,
+  version=&quot;版本&quot;,
+  author=&quot;作者&quot;,
+  author_email=&quot;邮箱&quot;,
+  description=&quot;简介&quot;,
+  long_description=long_description,
+  long_description_content_type=&quot;text/markdown&quot;,
+  url=&quot;github开源地址&quot;,
+  packages=setuptools.find_packages(),
+  classifiers=[
+  &quot;Programming Language :: Python :: 3&quot;,  #Python版本
+  &quot;License :: OSI Approved :: MIT License&quot;,  #开源许可
+  &quot;Operating System :: OS Independent&quot;,  #系统要求
+  ],
+)
+</code></pre>
+<p>创建README.md，写入项目详细信息（Markdown格式），创建licence.md，写入开源许可证内容<br>
+CMD cd到库文件夹，输入以下指令（注意，最后一步会要求输入Pypi账号密码）：</p>
+<pre><code>python setup.py sdist bdist_wheel
+python twine upload dist/*
+</code></pre>
+<h2 id="测试安装库">测试安装库</h2>
+<p>CMD输入指令</p>
+<pre><code>pip install 库名
+</code></pre>
+<p>如果安装成功了，就说明我们的库上传成功了<br>
+原文：<a href="https://zhuanlan.zhihu.com/p/60836179">https://zhuanlan.zhihu.com/p/60836179</a></p>
+
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://oldblog.fc.cloudns.ch/post/hello-gridea/">
+                                <h3 class="post-title">
+                                    Hello Gridea
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li><a href="#%E6%A6%82%E8%A6%81">概要</a>
+<ul>
+<li><a href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C">准备工作</a></li>
+<li><a href="#%E6%B3%A8%E5%86%8Cpypi%E8%B4%A6%E5%8F%B7">注册Pypi账号</a></li>
+<li><a href="#%E7%BC%96%E5%86%99python%E5%BA%93%E7%A8%8B%E5%BA%8F%E5%8D%95%E7%8B%AC%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%AD">编写Python库程序（单独文件夹中）</a></li>
+<li><a href="#%E6%89%93%E5%8C%85%E5%B9%B6%E4%B8%8A%E4%BC%A0">打包并上传</a></li>
+<li><a href="#%E6%B5%8B%E8%AF%95%E5%AE%89%E8%A3%85%E5%BA%93">测试安装库</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  友情链接： <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> and <a href="https://github.com" target="_blank">Github</a> | 
+  <a class="rss" href="https://oldblog.fc.cloudns.ch/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+        
+            <script>
+    window.onload = function() {
+        var gitalk = new Gitalk({
+            clientID: '21d7fb822b4454e44d82',
+            clientSecret: '91c0a72f04b7fa82c597d9aa098a40e26b6f1c6e',
+            repo: 'Comment',
+            owner: 'FangcatChina',
+            admin: ['FangcatChina'],
+            id: (location.pathname).substring(0, 49), // Ensure uniqueness and length less than 50
+            distractionFreeMode: false // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    }
+</script>
+                
+
+                    
+                                
+</body>
+
+</html>
