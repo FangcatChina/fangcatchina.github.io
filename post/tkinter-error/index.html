@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Tkinter报错“unknown option &#34;pyimage1/2&#34;”的解决办法 | Frank&#39;s Blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://www.fc.cloudns.ch/favicon.ico?v=1759459975625">
+<link rel="stylesheet" href="https://www.fc.cloudns.ch/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="问题概述
+在Label中放置PhotoImage时报错：
+Traceback (most recent call last):
+  File &quot;C:\Users\lenovo3c\AppData\Local\Programs\Py..." />
+    <meta name="keywords" content="Python" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://www.fc.cloudns.ch">
+        <img src="https://www.fc.cloudns.ch/images/avatar.png?v=1759459975625" class="site-logo">
+        <h1 class="site-title">Frank&#39;s Blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            主页
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://disk.fc.cloudns.ch" class="site-nav" target="_blank">
+            Nextcloud
+          </a>
+        
+      
+        
+          <a href="https://git.fcdn.ip-ddns.com" class="site-nav" target="_blank">
+            Github镜像
+          </a>
+        
+      
+        
+          <a href="https://ai.fc.cloudns.ch" class="site-nav" target="_blank">
+            Open WebUI
+          </a>
+        
+      
+        
+          <a href="https://mail.fc.cloudns.ch" class="site-nav" target="_blank">
+            Cloud Mail
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/FangcatChina" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://x.com/FFangcat29172" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Internet & Programming
+    </div>
+    <div class="site-footer">
+      友情链接： <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> and <a href="https://github.com" target="_blank">Github</a><a href="https://icp.gov.moe/?keyword=20250976" target="_blank"> 萌ICP备20250976号</a> | <a class="rss" href="https://www.fc.cloudns.ch/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Tkinter报错“unknown option &#34;pyimage1/2&#34;”的解决办法</h2>
+            <div class="post-date">2022-04-11</div>
+            
+              <div class="feature-container" style="background-image: url('https://www.fc.cloudns.ch/post-images/tkinter-error.png')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="问题概述">问题概述</h1>
+<p>在Label中放置PhotoImage时报错：</p>
+<pre><code>Traceback (most recent call last):
+  File &quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&quot;, line 1921, in __call__
+    return self.func(*args)
+  File &quot;f:\Windows\桌面\tst.py&quot;, line 7, in newwindow
+    l = Label(anotherwindow,image=img)
+  File &quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&quot;, line 3177, in __init__
+    Widget.__init__(self, master, 'label', cnf, kw)
+  File &quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&quot;, line 2601, in __init__
+    self.tk.call(
+_tkinter.TclError: image &quot;pyimage1&quot; doesn't exist
+</code></pre>
+<p>代码如下：</p>
+<pre><code>from tkinter import *
+root = Tk()
+def newwindow():
+    global anotherwindow
+    anotherwindow = Tk()
+    img = PhotoImage(file=&quot;image.png&quot;)
+    l = Label(anotherwindow,image=img)
+    l.pack()
+    anotherwindow.mainloop()
+bu = Button(root,text=&quot;你过来呀&quot;,command=newwindow)
+bu.pack()
+root.mainloop()
+</code></pre>
+<h1 id="解决过程">解决过程</h1>
+<h2 id="第一种办法将photoimage的定义挪到函数外">第一种办法：将PhotoImage的定义挪到函数外</h2>
+<p>修改为：</p>
+<pre><code>from tkinter import *
+root = Tk()
+img = PhotoImage(file=&quot;image.png&quot;)
+def newwindow():
+    global anotherwindow,img
+    anotherwindow = Tk()
+    l = Label(anotherwindow,image=img)
+    l.pack()
+    anotherwindow.mainloop()
+bu = Button(root,text=&quot;你过来呀&quot;,command=newwindow)
+bu.pack()
+root.mainloop()
+</code></pre>
+<p>结果依然报错：</p>
+<pre><code>Traceback (most recent call last):
+  File &quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&quot;, line 1921, in __call__
+    return self.func(*args)
+  File &quot;f:\Windows\桌面\tst.py&quot;, line 7, in newwindow
+    l = Label(anotherwindow,image=img)
+  File &quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&quot;, line 3177, in __init__
+    Widget.__init__(self, master, 'label', cnf, kw)
+  File &quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&quot;, line 2601, in __init__
+    self.tk.call(
+_tkinter.TclError: image &quot;pyimage1&quot; doesn't exist
+</code></pre>
+<p>为什么呢？这就要用到第二种办法了</p>
+<h2 id="第二种办法子窗口改用toplevel基于第一种方法">第二种办法：子窗口改用Toplevel（基于第一种方法）</h2>
+<p>修改为：</p>
+<pre><code>from tkinter import *
+root = Tk()
+img = PhotoImage(file=&quot;image.png&quot;)
+def newwindow():
+    global anotherwindow,img
+    anotherwindow = Toplevel()
+    l = Label(anotherwindow,image=img)
+    l.pack()
+bu = Button(root,text=&quot;你过来呀&quot;,command=newwindow)
+bu.pack()
+root.mainloop()
+</code></pre>
+<p>终于不报错了！<br>
+其实还有一个方法</p>
+<h2 id="第三种方法将label放入frame或labelframe中基于第一种方法">第三种方法：将Label放入Frame或LabelFrame中（基于第一种方法）</h2>
+<p>这种办法不适合这种情景，让我们换一个：</p>
+<pre><code>starting = Tk()
+starting.after(3000,starting.destroy)
+starting.mainloop()
+cfgfinished = False
+configure = Tk()
+BG = PhotoImage(file=&quot;background\iMac 2021 Green_1.png&quot;)
+bgl = Label(configure,image=BG)
+bgl.pack()
+configure.mainloop()
+</code></pre>
+<p>不知道为啥，已经distroy了依然报错<br>
+我们改成这样：</p>
+<pre><code>starting = Tk()
+starting.after(3000,starting.destroy)
+starting.mainloop()
+cfgfinished = False
+configure = Tk()
+fr = Frame(configure)
+fr.place(x=0,y=0)
+BG = PhotoImage(file=&quot;background\iMac 2021 Green_1.png&quot;)
+bgl = Label(fr,image=BG)
+bgl.pack()
+configure.mainloop()
+</code></pre>
+<hr>
+<h1 id="小结">小结</h1>
+<p>遇到“unknown option &quot;pyimage1/2&quot;”时，首先检查PhotoImage是否定义在函数内（最最最重要），再将根窗口内mainloop过程中的其他窗口统统改为Toplevel，如果还不行，就把Label放到随便一个框架里。</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://www.fc.cloudns.ch/tag/23Jopl5WA/" class="tag">
+                    Python
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://www.fc.cloudns.ch/post/python-package/">
+                  <h3 class="post-title">
+                    Python库的创建
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'Ov23liDSVAhWKPzUgv2c',
+        clientSecret: 'a9f4cc0311da8b026fd436d6cdd6d04e0c8c5180',
+        repo: 'Comment',
+        owner: 'FangcatChina',
+        admin: ['FangcatChina'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

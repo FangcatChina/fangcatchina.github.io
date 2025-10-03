@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>如何在FydeOS v20中手动安装Open GApps?  | Frank&#39;s Blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://www.fc.cloudns.ch/favicon.ico?v=1759459975625">
+<link rel="stylesheet" href="https://www.fc.cloudns.ch/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="
+FydeOS论坛页：Here
+
+注意！笔者电脑架构为x86_64，可能因机器而异，本帖仅供参考
+
+在论坛里求助没人鸟🌚还是自己摸索出来的
+
+Requirements:
+开启开发者模式
+关闭根文件系统验证（https://fydeos.c..." />
+    <meta name="keywords" content="Operating Systems" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://www.fc.cloudns.ch">
+        <img src="https://www.fc.cloudns.ch/images/avatar.png?v=1759459975625" class="site-logo">
+        <h1 class="site-title">Frank&#39;s Blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            主页
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://disk.fc.cloudns.ch" class="site-nav" target="_blank">
+            Nextcloud
+          </a>
+        
+      
+        
+          <a href="https://git.fcdn.ip-ddns.com" class="site-nav" target="_blank">
+            Github镜像
+          </a>
+        
+      
+        
+          <a href="https://ai.fc.cloudns.ch" class="site-nav" target="_blank">
+            Open WebUI
+          </a>
+        
+      
+        
+          <a href="https://mail.fc.cloudns.ch" class="site-nav" target="_blank">
+            Cloud Mail
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/FangcatChina" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://x.com/FFangcat29172" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Internet & Programming
+    </div>
+    <div class="site-footer">
+      友情链接： <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> and <a href="https://github.com" target="_blank">Github</a><a href="https://icp.gov.moe/?keyword=20250976" target="_blank"> 萌ICP备20250976号</a> | <a class="rss" href="https://www.fc.cloudns.ch/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">如何在FydeOS v20中手动安装Open GApps? </h2>
+            <div class="post-date">2025-10-02</div>
+            
+              <div class="feature-container" style="background-image: url('https://www.fc.cloudns.ch/post-images/fydeos-gapp-install.jpg')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <blockquote>
+<p>FydeOS论坛页：<a href="https://community.fydeos.com/t/topic/51921">Here</a></p>
+</blockquote>
+<h2 id="注意笔者电脑架构为x86_64可能因机器而异本帖仅供参考"><strong>注意！笔者电脑架构为x86_64，可能因机器而异，本帖仅供参考</strong></h2>
+<blockquote>
+<p>在论坛里求助没人鸟🌚还是自己摸索出来的</p>
+</blockquote>
+<h2 id="requirements">Requirements:</h2>
+<p>开启开发者模式<br>
+关闭根文件系统验证（https://fydeos.com/help/knowledge-base/developer-options/developer-mode/disable-rootfs-verification/ ）</p>
+<h2 id="1下载">1.下载</h2>
+<p>已通过gh-proxy加速过的链接：<a href="https://gh-proxy.com/https://github.com/MindTheGapps/13.0.0-x86_64/releases/download/MindTheGapps-13.0.0-x86_64-20231025_201203/MindTheGapps-13.0.0-x86_64-20231025_201203.zip">MindTheGapps-13.0.0-x86_64-20231025_201203.zip</a><br>
+未加速链接（默认下载链接）：<a href="https://github.com/MindTheGapps/13.0.0-x86_64/releases/download/MindTheGapps-13.0.0-x86_64-20231025_201203/MindTheGapps-13.0.0-x86_64-20231025_201203.zip">MindTheGapps-13.0.0-x86_64-20231025_201203.zip</a><br>
+<strong>请保存至我的文件=&gt;下载内容</strong></p>
+<h2 id="2文件替换">2.文件替换</h2>
+<p>在桌面上按Ctrl+Alt+T，进入crosh<br>
+输入：<br>
+<strong>（星号部分请自动Tab补全，因机器而异）</strong></p>
+<pre><code>shell
+sudo -i
+cd /home/user/*/MyFiles/Downloads
+cp MindTheGapps-13.0.0-x86_64-20231025_201203.zip /home/chronos/fydeos-arc-gapps/arc-rec/download_temp
+</code></pre>
+<h2 id="3大功告成">3.大功告成</h2>
+<p>按照正常流程安装，不出意外的话会自动跳过下载流程</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://www.fc.cloudns.ch/tag/operating-systems/" class="tag">
+                    Operating Systems
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://www.fc.cloudns.ch/post/linux-pc/">
+                  <h3 class="post-title">
+                    Linux与个人市场——成也开放，败也开放
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'Ov23liDSVAhWKPzUgv2c',
+        clientSecret: 'a9f4cc0311da8b026fd436d6cdd6d04e0c8c5180',
+        repo: 'Comment',
+        owner: 'FangcatChina',
+        admin: ['FangcatChina'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

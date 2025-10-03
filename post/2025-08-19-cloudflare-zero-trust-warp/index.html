@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>不绑卡，解锁Cloudflare Zero Trust | Frank&#39;s Blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://www.fc.cloudns.ch/favicon.ico?v=1759459975625">
+<link rel="stylesheet" href="https://www.fc.cloudns.ch/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="众所周知，Cloudflare WARP可以用来安全加密互联网连接，而WARP分为二这几种类型：
+
+  
+    WARP 1G流量
+  
+  
+    WARP+ 需要特定渠道获得License，1923837100 GB，基本够用
+  ..." />
+    <meta name="keywords" content="Web" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://www.fc.cloudns.ch">
+        <img src="https://www.fc.cloudns.ch/images/avatar.png?v=1759459975625" class="site-logo">
+        <h1 class="site-title">Frank&#39;s Blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            主页
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://disk.fc.cloudns.ch" class="site-nav" target="_blank">
+            Nextcloud
+          </a>
+        
+      
+        
+          <a href="https://git.fcdn.ip-ddns.com" class="site-nav" target="_blank">
+            Github镜像
+          </a>
+        
+      
+        
+          <a href="https://ai.fc.cloudns.ch" class="site-nav" target="_blank">
+            Open WebUI
+          </a>
+        
+      
+        
+          <a href="https://mail.fc.cloudns.ch" class="site-nav" target="_blank">
+            Cloud Mail
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/FangcatChina" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://x.com/FFangcat29172" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Internet & Programming
+    </div>
+    <div class="site-footer">
+      友情链接： <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> and <a href="https://github.com" target="_blank">Github</a><a href="https://icp.gov.moe/?keyword=20250976" target="_blank"> 萌ICP备20250976号</a> | <a class="rss" href="https://www.fc.cloudns.ch/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">不绑卡，解锁Cloudflare Zero Trust</h2>
+            <div class="post-date">2025-08-19</div>
+            
+              <div class="feature-container" style="background-image: url('https://www.fc.cloudns.ch/post-images/2025-08-19-cloudflare-zero-trust-warp.png')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>众所周知，Cloudflare WARP可以用来安全加密互联网连接，而WARP分为二这几种类型：</p>
+<ul class="wp-block-list">
+  <li>
+    WARP 1G流量
+  </li>
+  <li>
+    WARP+ 需要特定渠道获得License，1923837100 GB，基本够用
+  </li>
+  <li>
+    Zero Trust 几乎无限流量
+  </li>
+</ul>
+<p>而获取Zero Trust正常来讲需要绑卡，但是，我们今天用特殊方法获取Zero Trust</p>
+<p>打开Cloudflare Zero Trust，不要理会绑卡提示，打开左边侧栏=&gt;Gateway=&gt;概述</p>
+<p>拉到下方提示，点击：<figure class="wp-block-image size-full"></p>
+<p><img loading="lazy" decoding="async"  src="https://www.fc.cloudns.ch/wp-content/uploads/2025/08/image.png" /></figure></p>
+<p>按照提示操作，注意！在这个地方：<figure class="wp-block-image size-full"></p>
+<p><img loading="lazy" decoding="async"  src="https://www.fc.cloudns.ch/wp-content/uploads/2025/08/image-1.png" /></figure></p>
+<p>不建议使用默认邮箱，容易注册失败！建议自己添加一个</p>
+<p><strong>题外话：启用MASQUE协议</strong></p>
+<p>连接完别退出！点这个跳过绑卡验证：</p>
+<figure class="wp-block-image size-full">
+<p><img loading="lazy" decoding="async"  src="https://www.fc.cloudns.ch/wp-content/uploads/2025/08/image-2.png"  /></figure></p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://www.fc.cloudns.ch/tag/web/" class="tag">
+                    Web
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://www.fc.cloudns.ch/post/2025-08-14-unpopular-fydeos/">
+                  <h3 class="post-title">
+                    为什么FydeOS在国内注定小众？
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'Ov23liDSVAhWKPzUgv2c',
+        clientSecret: 'a9f4cc0311da8b026fd436d6cdd6d04e0c8c5180',
+        repo: 'Comment',
+        owner: 'FangcatChina',
+        admin: ['FangcatChina'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
