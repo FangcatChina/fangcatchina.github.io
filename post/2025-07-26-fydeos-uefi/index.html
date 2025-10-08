@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>用rEFInd-theme-Yours解决FydeOS UEFI安全启动问题  | Frank&#39;s Blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v7.1.0/css/all.css" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://www.fc.cloudns.ch/favicon.ico?v=1759934726471">
+<link rel="stylesheet" href="https://www.fc.cloudns.ch/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Requirements:
+
+  
+    能够访问Github
+  
+  
+    DiskGenius
+  
+  
+    BIOS支持64位UEFI（若不支持可参考下载链接中的教程）
+  
+
+1.下载
+必须：Grub2 Fyde 2
+..." />
+    <meta name="keywords" content="Operating Systems" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://www.fc.cloudns.ch">
+        <img src="https://www.fc.cloudns.ch/images/avatar.png?v=1759934726471" class="site-logo">
+        <h1 class="site-title">Frank&#39;s Blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            主页
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://disk.fc.cloudns.ch" class="site-nav" target="_blank">
+            Nextcloud
+          </a>
+        
+      
+        
+          <a href="https://git.fcdn.ip-ddns.com" class="site-nav" target="_blank">
+            Github镜像
+          </a>
+        
+      
+        
+          <a href="https://ai.fc.cloudns.ch" class="site-nav" target="_blank">
+            Open WebUI
+          </a>
+        
+      
+        
+          <a href="https://mail.fc.cloudns.ch" class="site-nav" target="_blank">
+            Cloud Mail
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/FangcatChina" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://x.com/FFangcat29172" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <a class="social-link" href="https://space.bilibili.com/588672425" target="_blank">
+            <i class="fab fa-bilibili"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://music.163.com/#/user/home?id=3813931225" target="_blank">
+            <i class="fa fa-music"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="mailto:admin@fc.cloudns.ch" target="_blank">
+            <i class="fa fa-envelope"></i>
+          </a>
+        
+      
+    </div>
+    <div class="site-description">
+      Internet & Programming
+    </div>
+    <div class="site-footer">
+      友情链接： <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> and <a href="https://github.com" target="_blank">Github</a><a href="https://icp.gov.moe/?keyword=20250976" target="_blank"> 萌ICP备20250976号</a> | <a class="rss" href="https://www.fc.cloudns.ch/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">用rEFInd-theme-Yours解决FydeOS UEFI安全启动问题 </h2>
+            <div class="post-date">2025-07-26</div>
+            
+              <div class="feature-container" style="background-image: url('https://www.fc.cloudns.ch/post-images/2025-07-26-fydeos-uefi.png')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p><strong>Requirements:</strong></p>
+<ul class="wp-block-list">
+  <li>
+    能够访问Github
+  </li>
+  <li>
+    DiskGenius
+  </li>
+  <li>
+    BIOS支持64位UEFI（若不支持可参考下载链接中的教程）
+  </li>
+</ul>
+<p><strong>1.下载</strong><br>
+必须：<a href="https://github.com/M-L-P/grub2-fyde">Grub2 Fyde 2</a></p>
+<ul class="wp-block-list">
+  <li>
+    BIOS支持64位UEFI：<a href="https://github.com/M-L-P/Yours-UEFI">Yours UEFI 1</a>
+  </li>
+  <li>
+    不支持：<a href="https://github.com/M-L-P/Yours-LegacyBIOS">Yours LegacyBIOS</a>
+  </li>
+</ul>
+<p>（在此感谢上方Github仓库的贡献者！）<br>
+下载最新Release压缩包并解压</p>
+<p><strong>2.安装EFI文件 （以下以支持64位UEFI为例）</strong><br>
+打开DiskGenius，选择SYSTEM_DRV分区并打开<br>
+按照以下步骤复制文件：</p>
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+  <p>
+    注意：若想保留Windows原引导，忽略删除EFI\Boot步骤，并将压缩包中Boot中的Bootx64.efi更名为其他名称，否则Windows容易PIN码失效
+  </p>
+</blockquote>
+<p>Yours-UEFI:<figure class="wp-block-image size-full"></p>
+<p><img loading="lazy" decoding="async"  src="https://www.fc.cloudns.ch/wp-content/uploads/2025/07/image.png" /></figure></p>
+<p>Grub2-Fyde:</p>
+<figure class="wp-block-image size-full">
+<p><img loading="lazy" decoding="async"  src="https://www.fc.cloudns.ch/wp-content/uploads/2025/07/image-1.png" /></figure></p>
+<p><strong>3.调整引导顺序并安装证书</strong><br>
+在DiskGenius中转到”工具=&gt;设置UEFI BIOS启动项”，按照图示新增/修改原Windows引导项</p>
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+  <p>
+    若不保留Windows原引导，请将启动文件替换为\EFI\Boot\Bootx64.efi
+  </p>
+</blockquote><figure class="wp-block-image size-full">
+<p><img loading="lazy" decoding="async" src="https://www.fc.cloudns.ch/wp-content/uploads/2025/07/屏幕截图-2025-07-21-191433.png"  /></figure></p>
+<p>点击保存后，勾选“下次启动时…”，或将该启动项移至最前面，关闭电脑<br>
+在BIOS中暂时禁用安全启动（Secure Boot）<br>
+开机后，出现MokManager页面<figure class="wp-block-image size-full"></p>
+<p><img loading="lazy" decoding="async"  src="https://www.fc.cloudns.ch/wp-content/uploads/2025/07/image-2.png" /></figure></p>
+<p>选择OK<figure class="wp-block-image size-full"></p>
+<p><img loading="lazy" decoding="async"  src="https://www.fc.cloudns.ch/wp-content/uploads/2025/07/image-3.png"  /></figure></p>
+<p>按下任意键</p>
+<p>选择Enroll key from disk<br>
+接下来找到ENROLL_THIS_KEY_IN_MOKMANAGER.cer，回车，选择Continue=&gt;Yes=&gt;Reboot<br>
+在BIOS中开启安全启动后，即可正常进入引导界面<figure class="wp-block-image size-full"></p>
+<p><img loading="lazy" decoding="async" src="https://www.fc.cloudns.ch/wp-content/uploads/2025/07/image-4.png"  /></figure></p>
+<p>选择FydeOS，回车，之后即可在安全启动下正常使用FydeOS<br>
+之后的引导界面自定义可参考<a href="https://github.com/M-L-P/rEFInd-theme-Yours">rEFInd-theme-Yours </a></p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://www.fc.cloudns.ch/tag/operating-systems/" class="tag">
+                    Operating Systems
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://www.fc.cloudns.ch/post/vscode-cpp/">
+                  <h3 class="post-title">
+                    如何在Visual Studio Code中配置C/C++开发环境
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'Ov23liDSVAhWKPzUgv2c',
+        clientSecret: 'a9f4cc0311da8b026fd436d6cdd6d04e0c8c5180',
+        repo: 'Comment',
+        owner: 'FangcatChina',
+        admin: ['FangcatChina'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
