@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <author>
+    <name>Frank Fang</name>
+  </author>
+  <generator uri="https://hexo.io/">Hexo</generator>
+  <id>http://www.091209.xyz/</id>
+  <link href="http://www.091209.xyz/" rel="alternate"/>
+  <link href="http://www.091209.xyz/atom.xml" rel="self"/>
+  <rights>All rights reserved 2026, Frank Fang</rights>
+  <title>Frank's Blog</title>
+  <updated>2025-12-06T08:22:49.028Z</updated>
+  <entry>
+    <author>
+      <name>Frank Fang</name>
+    </author>
+    <category term="Operating Systems" scheme="http://www.091209.xyz/tags/Operating-Systems/"/>
+    <content>
+      <![CDATA[<blockquote><p>本文主要针对视频中UP主观性过强以及较为夸大的部分提出质疑<br>视频链接：<a href="https://www.bilibili.com/video/BV1YvenzUEFf">「女友体验Linux」 全程禁用命令行，颠覆刻板印象，纯小白也能轻松上手！</a></p></blockquote> <p><strong>事先声明：我不是Linux黑子，本篇文章于Linux端Gridea编写</strong></p> <h2 id="1-事前准备">1. 事前准备</h2> <p>在视频开头02:45，UP主粗略带过了两句话：</p> <blockquote><p><strong>我</strong>事先腾出了硬盘空间，用Ventoy制作了安装系统所需要的U盘</p></blockquote> <p>安装双系统对普通用户最大的一道坎就是分区与烧录系统U盘，复杂的步骤被一笔带过+甩教程链接，高，实在是高</p> <h2 id="2-系统选择">2. 系统选择</h2> <p>在视频03:04，UP主再一次粗略带过两句话：</p> <blockquote><p>本期视频旨在展现Linux的易用性，所以<strong>我</strong>选择了Linux Mint</p></blockquote> <p>展现易用性的初心是不错的，但是为什么不将系统选择权交给你的女朋友呢？让我们猜一猜她会在纷繁复杂的LInux发行版里选择什么系统，说不定就是你花了1个小时讲完全教程的，安装过程没有图形界面的Arch Linux</p> <h2 id="3-输入法">3. 输入法</h2> <p>视频08:13<br> <em>中文Linux用户的痛点竟然被放到了如此靠后的位置</em></p> <blockquote><p><strong>Linux Mint</strong> <strong>自带</strong>了输入法安装向导</p></blockquote> <p>如果你的女朋友选的不是Linux Mint，这一项完全不成立，她就需要搜索Linux输入法，打开命令行，敲：</p> <pre><code class="hljs sql">sudo apt <span class="hljs-keyword">update</span>sudo apt <span class="hljs-keyword">install</span> fcitx5 fcitx5-chinese-addons</code></pre> <p>至此，挑战失败</p> <h2 id="4-软件安装">4. 软件安装</h2> <blockquote><p>视频中4-18均为软件生态相关挑战</p></blockquote> <p>上次视频发布后，很多人喷我：</p> <blockquote><p>用cli比用gui优雅的多！<br>你埃及把用不用！</p></blockquote> <p>那让我们看看视频中这位用户的表现：手足无措，不知道从哪下载，不知道应该下载哪个版本，不知道AppImage如何设置使用，需要身边UP主的指导<br>我们大胆设想一下：如果身边没有指导，你需要到互联网上翻看大量教程（可能是纯英文），你还会安装使用Linux吗？如果你喜爱的Adobe全家桶，Canvas可画，etc. 只有网页版和需要重新学习的开源替代品，你真的会为了所谓“开源自由”的理想而牺牲生产力吗？<br>达芬奇的<strong>依赖缺失</strong>一略而过，反而要换成更难学习的功能没那么丰富Kdenlive，你真的是在展现LInux的易用性吗？<br> <em>依赖缺失的Solution见下贴：<a href="https://forum.blackmagicdesign.com/viewtopic.php?f=38&amp;t=200276">BlackMagic Forum</a>，没用过Linux的各位可以自己读读看，挑战依然失败</em></p> <p>plus，很幸运你女朋友所使用的<strong>国产软件</strong> <strong>均支持Linux&amp;Wayland</strong><br>无Wayland支持：</p> <ul><li>腾讯会议</li> <li>钉钉</li> <li>ToDesk</li></ul> <p>无Linux支持：</p> <ul><li>网易云音乐（仅有与deepin合作版）</li> <li>爱奇艺</li></ul> <h2 id="5游戏">5.游戏</h2> <p>Proton兼容层性能损耗没提过，兼容性问题没提过，我无话可说</p> <h3 id="总结">总结</h3> <p>视频的初心是不错的，但我并不认为对缺点的一略带过是正确的，评价应该客观，而不应只说一面</p> <blockquote><p>Every coin has two sides</p></blockquote>]]>
+    </content>
+    <id>http://www.091209.xyz/2025/10/03/linux-easy/</id>
+    <link href="http://www.091209.xyz/2025/10/03/linux-easy/"/>
+    <published>2025-10-03T08:03:19.000Z</published>
+    <summary>
+      <![CDATA[<blockquote><p>本文主要针对视频中UP主观性过强以及较为夸大的部分提出质疑<br>
+视频链接：<a href="https://www.bilibili.com/video/BV1YvenzUEFf">「女友体验Linux」]]>
+    </summary>
+    <title>驳林长枫《女友体验Linux》纯小白也能轻松上手?</title>
+    <updated>2025-12-06T08:22:49.028Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Frank Fang</name>
+    </author>
+    <category term="Operating Systems" scheme="http://www.091209.xyz/tags/Operating-Systems/"/>
+    <content>
+      <![CDATA[<blockquote><p>FydeOS论坛页：<a href="https://community.fydeos.com/t/topic/51921">Here</a></p></blockquote> <h2 id="注意笔者电脑架构为x86_64可能因机器而异本帖仅供参考"><strong>注意！笔者电脑架构为x86_64，可能因机器而异，本帖仅供参考</strong></h2> <blockquote><p>在论坛里求助没人鸟🌚还是自己摸索出来的</p></blockquote> <h2 id="requirements">Requirements:</h2> <p>开启开发者模式<br>关闭根文件系统验证（https://fydeos.com/help/knowledge-base/developer-options/developer-mode/disable-rootfs-verification/ ）</p> <h2 id="1下载">1.下载</h2> <p>已通过gh-proxy加速过的链接：<a href="https://gh-proxy.com/https://github.com/MindTheGapps/13.0.0-x86_64/releases/download/MindTheGapps-13.0.0-x86_64-20231025_201203/MindTheGapps-13.0.0-x86_64-20231025_201203.zip">MindTheGapps-13.0.0-x86_64-20231025_201203.zip</a><br>未加速链接（默认下载链接）：<a href="https://github.com/MindTheGapps/13.0.0-x86_64/releases/download/MindTheGapps-13.0.0-x86_64-20231025_201203/MindTheGapps-13.0.0-x86_64-20231025_201203.zip">MindTheGapps-13.0.0-x86_64-20231025_201203.zip</a><br> <strong>请保存至我的文件=&gt;下载内容</strong></p> <h2 id="2文件替换">2.文件替换</h2> <p>在桌面上按Ctrl+Alt+T，进入crosh<br>输入：<br> <strong>（星号部分请自动Tab补全，因机器而异）</strong></p> <pre><code class="hljs bash">shellsudo -i<span class="hljs-built_in">cd</span> /home/user/*/MyFiles/Downloadscp MindTheGapps-13.0.0-x86_64-20231025_201203.zip /home/chronos/fydeos-arc-gapps/arc-rec/download_temp</code></pre> <h2 id="3大功告成">3.大功告成</h2> <p>按照正常流程安装，不出意外的话会自动跳过下载流程</p>]]>
+    </content>
+    <id>http://www.091209.xyz/2025/10/02/fydeos-gapp-install/</id>
+    <link href="http://www.091209.xyz/2025/10/02/fydeos-gapp-install/"/>
+    <published>2025-10-02T08:00:30.000Z</published>
+    <summary>
+      <![CDATA[<blockquote><p>FydeOS论坛页：<a href="https://community.fydeos.com/t/topic/51921">Here</a></p></blockquote> <h2]]>
+    </summary>
+    <title>如何在FydeOS v20中手动安装Open GApps?</title>
+    <updated>2025-12-06T08:22:36.529Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Frank Fang</name>
+    </author>
+    <category term="Operating Systems" scheme="http://www.091209.xyz/tags/Operating-Systems/"/>
+    <content>
+      <![CDATA[<blockquote><p>本篇文章为视频稿，成品视频见：<a href="https://www.bilibili.com/video/BV1kae6zpE5W">Linux与PC——成也开放，败也开放</a></p></blockquote><p>（注：本期视频讨论的Linux均指GNU&#x2F;Linux）<br>Linux，三大计算机操作系统之一，由Linus Torvalds开发，绝大多数功能由开源社区驱动。熟悉他的人知道，它广泛运用于服务器领域，但在个人PC上，却依旧难以与Windows与macOS平齐。为什么开源免费的系统得不到大众认可？这可能是一众搞机佬困惑已久的问题。这期，让我们探讨一下，Linux与个人市场的种种不合之处。</p><ol><li><p>国内软件适配<br>对于许多专业软件只支持Windows，我们这里不再赘述。最令我抓狂的其实并不是这个，而是当你知道自己使用的软件支持Linux，满心欢喜地安装好系统后，发现它的适配是“有条件”的适配。腾讯会议，一款令中国Linux用户痛骂“不作为”的软件，在2025年，竟然还不支持Wayland桌面！对，你没听错，它依然仅仅支持老古董X11！想要在Wayland下用？不好意思，自己去改&#x2F;opt目录下面的启动脚本。改完了，不好意思，屏幕共享开不了，自己去找办法吧。这些公司应该做的事，最终完成的是Github上的广大码农！当你过五关斩六将，手动编译wemeet-wayland-screenshare或者安装flatpak包腾讯会议，高高兴兴地想要投入使用的时候，你会发现你得到的是阉割版，连互动批注这样简单的功能都不能使用！不好意思，这个真的没办法。类似的软件还有搜狗输入法，不仅不支持Wayland，在fcitx5盛行的年代竟然还只支持十多年前的fcitx！你说它落后吧，它好歹支持Linux，你说它不落后吧，它依赖的是十多年前的老古董。</p></li><li><p>包管理<br>apt这个词，对于Debian系的用户来说再熟悉不过了，它是Debian的包管理器。我记得我一开始接触树莓派的时候，印象最深的指令是sudo，第二深的就是apt。Linux的各种软件包存在着错综复杂的依赖关系，因此被戏称为依赖地狱（Dependency Hell）。LinusTechTips中的Linus在他挑战使用Linux一个月的时候遇到的第一个挫折就是：一个Steam安装包搞垮了他的Pop!_OS桌面，究其原因，就是包管理的依赖过于复杂。A软件要1.2，B软件要1.3，C要qt5，D要qt6，谁也不让谁，最终只能二选一。同样的悲剧，也上演在Python3的pip，每次装新库，永远要带上那万恶的–break-system-packages，装的时候总是生怕一不小心，系统完蛋。Flatpak&#x2F;Snap？给我的感觉是：原生适配不多，安装包也臃肿，Steam的.deb安装包仅几十MB，而其Flatpak安装要占用上百MB，但不可否认，它确实在一定程度上缓解了依赖问题。</p></li><li><p>终端优先<br>Linux给普通用户的第一印象，基本都是如山一样堆积的复杂的系统命令，而事实也确实如此。随便翻开任何一个Linux软件的安装说明，你几乎总能看到命令行，有的一两行装依赖，有的十来行装证书，ppa源。问题是：为什么Linux不能够像Windows，macOS那样足够简单上手？我知道有的人会说：哎呀KDE上的Discover不也挺不错的吗？但你忽略了一个问题：并不是所有开发者都认为你在使用图形界面安装软件。举个例子：Howdy，一个Windows Hello样式的人脸解锁软件包，它的初次安装配置就是要在安装过程中的命令行手动执行的。这种配置映射到”应用商店”的结果是什么呢？进度卡死！你又会说：pkill终止任务再sudo apt –fix-broken install不就好了。但是，你真的认为一个普通用户知道如何修复吗？你真的认为一个普通用户会有心思热衷于熟练掌握apt的命令吗？对于只想“用电脑”而不是“玩电脑”的用户，这道鸿沟确实难以逾越。</p></li></ol><p>说了这么多，概括起来，Linux对于个人用户的特点就6个字——没生态，还折腾。Linux在服务器市场中的广泛应用不可否认，它用轻量，强大，开源，免费的核心特质，支撑起了全球的网络服务，我本人也依然在使用诸如apache2等Linux服务器软件来搭建网站。而至于个人市场，虽然在最近几年，我们确实能看到Linux在个人PC上市占率的进步，但是，至于能否完全赶上Windows和macOS？我的个人结论是：为时尚早。</p>]]>
+    </content>
+    <id>http://www.091209.xyz/2025/09/11/HjmnFla6g-/</id>
+    <link href="http://www.091209.xyz/2025/09/11/HjmnFla6g-/"/>
+    <published>2025-09-11T15:03:55.000Z</published>
+    <summary>
+      <![CDATA[<blockquote>
+<p>本篇文章为视频稿，成品视频见：<a]]>
+    </summary>
+    <title>Linux与个人市场——成也开放，败也开放</title>
+    <updated>2025-12-06T08:22:43.056Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Frank Fang</name>
+    </author>
+    <category term="Web" scheme="http://www.091209.xyz/tags/Web/"/>
+    <content>
+      <![CDATA[<p>众所周知，Cloudflare WARP可以用来安全加密互联网连接，而WARP分为二这几种类型：</p><ul class="wp-block-list">  <li>    WARP 1G流量  </li>  <li>    WARP+ 需要特定渠道获得License，1923837100 GB，基本够用  </li>  <li>    Zero Trust 几乎无限流量  </li></ul><p>而获取Zero Trust正常来讲需要绑卡，但是，我们今天用特殊方法获取Zero Trust</p><p>打开Cloudflare Zero Trust，不要理会绑卡提示，打开左边侧栏&#x3D;&gt;Gateway&#x3D;&gt;概述</p><p>拉到下方提示，点击：<figure class="wp-block-image size-full"></p><p><img loading="lazy" decoding="async"  src="https://www.fc.cloudns.ch/wp-content/uploads/2025/08/image.png" /></figure> </p><p>按照提示操作，注意！在这个地方：<figure class="wp-block-image size-full"></p><p><img loading="lazy" decoding="async"  src="https://www.fc.cloudns.ch/wp-content/uploads/2025/08/image-1.png" /></figure> </p><p>不建议使用默认邮箱，容易注册失败！建议自己添加一个</p><p><strong>题外话：启用MASQUE协议</strong></p><p>连接完别退出！点这个跳过绑卡验证：  </p><figure class="wp-block-image size-full"><p><img loading="lazy" decoding="async"  src="https://www.fc.cloudns.ch/wp-content/uploads/2025/08/image-2.png"  /></figure></p>]]>
+    </content>
+    <id>http://www.091209.xyz/2025/08/19/2025-08-19-cloudflare-zero-trust-warp/</id>
+    <link href="http://www.091209.xyz/2025/08/19/2025-08-19-cloudflare-zero-trust-warp/"/>
+    <published>2025-08-19T01:01:56.000Z</published>
+    <summary>
+      <![CDATA[<p>众所周知，Cloudflare WARP可以用来安全加密互联网连接，而WARP分为二这几种类型：</p>
+<ul class="wp-block-list">
+  <li>
+    WARP 1G流量
+  </li>
+  <li>
+    WARP+]]>
+    </summary>
+    <title>不绑卡，解锁Cloudflare Zero Trust</title>
+    <updated>2025-12-06T08:22:14.278Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Frank Fang</name>
+    </author>
+    <category term="Operating Systems" scheme="http://www.091209.xyz/tags/Operating-Systems/"/>
+    <content>
+      <![CDATA[<blockquote><p>（视频稿）<br><strong>成品视频：<a href="https://www.bilibili.com/video/BV1cwt8zrEYo/">为什么FydeOS在国内注定小众？_哔哩哔哩_bilibili</a></strong></p></blockquote><p>几年前，我开始对操作系统感兴趣，当我在互联网中翻找着各种操作系统的时候，我看到了一个有些不同的身影——FydeOS。那时的我还没有自己的手机号码，而它的配置界面就这样把我挡在了门外。而几年后的今天，再一次将我挡在门外的，是它的设计理念。</p><ol class="wp-block-list">  <li>    割裂  </li></ol><p>我们来假设你是一个普通的上班族，你每天要处理大量的文档，面对各种各样的会议，因为忍受不了Windows的臃肿与Linux的生态缺失，你选择了FydeOS。你电脑上的常用软件有：QQ，微信，腾讯会议，Office三件套。</p><p>前三个软件的解决方案基本相同，你可以选择Linux版或安卓版，但每个版本都有各自的优缺点，例如安卓版的QQ与微信不能和手机同时登录，Linux版微信需要自行配置输入法，安卓版腾讯会议共享屏幕仅能看到安卓子系统内的应用，Linux版腾讯会议开不了摄像头。</p><p>来到Office三件套，便多了一个官方推荐选择：上传至Onedrive或Google云盘后打开。在中国大陆网络环境下，这两个网站的访问体验并不好。安卓版的WPS&nbsp;Office功能不完善，Linux版还要先将文件移至Linux共享目录下打开，多出了一个步骤，体验感瞬间爆炸。其实还有一种方式是使用Crossover&nbsp;Chrome&nbsp;OS安装Microsoft&nbsp;Office，但这款软件的售价为39.95美元每月，约合人民币290元。（花屏）</p><p>更难受的是，所有的优缺点全部需要你自己去摸索测试，在使用FydeOS的半个月里，我已经在论坛发了好几篇求助帖，但是得到有效回复的寥寥无几。这一套下来，大多数人已经被劝退了，即使你能承受这样的繁琐，在使用过程中，你也会感到严重的割裂感——它不像是一个独立的操作系统，而更像是一个带有Google桌面与安卓子系统的Debian&nbsp;Linux。</p><ol start="2" class="wp-block-list">  <li>    性能  </li></ol><p>如果你认为：哎呀FydeOS本质上就是个浏览器，用不了多少性能，那你就大错特错了。FydeOS对普通用户来说“能用”的最大原因就是它的两个子系统，也就是容器，而容器的内存占用是很夸张的。在我的16GB内存的主力机上日常使用时，FydeOS的空余内存最小能达到2GB，而这一数字，在同一台电脑上的Windows与Kubuntu基本是8GB。如果你再开个Steam玩游戏，还要多个Borealis容器。正因如此，在4GB内存的Raspberry&nbsp;Pi&nbsp;4B上运行时，社区中的一众用户不会推荐你打开子系统。</p><ol start="3" class="wp-block-list">  <li>    细节  </li></ol><p>如果你想要将FydeOS与Windows系统装在一台机器上，你必须关闭安全启动功能，或者参照Github上的grub2fyde项目更改UEFI启动项。但是，这些事对非技术性用户来说并不简单，甚至还有搞炸引导的风险。对于一些追求安全性的用户来说，Windows下的安全启动是十分必要的，因此你就会发现，当你每次开关安全启动后打开Windows时，你的PIN码竟然会失效！（花屏）还有特别多影响使用体验的小细节，OpenGApps安装的缓慢，Linux下的大小写失灵，微信在Linux下输入法的另外配置，arm64架构应用在x86_64架构下的经常崩溃，都无时无刻不令人抓狂。</p><p>上面这三条，每一个字都映射出了FydeOS，甚至是同根同源的ChromeOS最核心的设计理念——云优先与安全。是的，它从诞生之初就不是为了普通人的使用，而是为了那些总是与网页打交道的用户，例如大学教职工。也难怪，在巅峰时期，ChromeOS能够超过macOS，成为美国市场第二大操作系统。这也就是为什么，FydeOS的商业解决方案页面上的应用领域，是数字标牌与自助终端的理想方案。相比之下，劣势也很明显：它不适合需要使用本地应用的用户，它不适合离线办公，它也不适合需求复杂多样的用户。在此，我们终于能够解答这期视频标题中的问题：为什么FydeOS在国内注定小众。它不是一个适合大多数人的系统。</p><p>但如果，我们转变一下视角，看看它能发挥出光彩的地方呢？</p><p>它可以是小孩子的第一台电脑，令他们接触到丰富多彩的互联网世界；它可以是企业管理的的低成本解决方案，简化配置与管理流程，为企业节省可观成本；它可以在低性能设备上满足基本的上网需求，使更多的人迈入网络。如果你只是写写代码，看看网页，FydeOS足以满足你的要求。</p><p>可能在生活中，它早已悄然融入，只是我们并不了解。或许在你孩子使用的学习机上，在商场的信息查询终端里，在公司的前台设备中，FydeOS 正悄然运行着。</p><p>愿FydeOS越来越好。愿将来有一天，我们能看到它在操作系统的竞争中，绽放出耀眼的光彩。</p>]]>
+    </content>
+    <id>http://www.091209.xyz/2025/08/14/2025-08-14-unpopular-fydeos/</id>
+    <link href="http://www.091209.xyz/2025/08/14/2025-08-14-unpopular-fydeos/"/>
+    <published>2025-08-14T03:29:55.000Z</published>
+    <summary>
+      <![CDATA[<blockquote>
+<p>（视频稿）<br><strong>成品视频：<a]]>
+    </summary>
+    <title>为什么FydeOS在国内注定小众？</title>
+    <updated>2025-12-06T08:22:24.210Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Frank Fang</name>
+    </author>
+    <category term="Web" scheme="http://www.091209.xyz/tags/Web/"/>
+    <content>
+      <![CDATA[<p>记录下自己的建站过程</p><h2 id="1-Requirements-Preparations"><a href="#1-Requirements-Preparations" class="headerlink" title="1 Requirements &amp; Preparations"></a>1 Requirements &amp; Preparations</h2><p>安装apache2,php</p><pre class="wp-block-code"><code>sudo apt install apache2 php8.2</code></pre><p>访问 服务器ip:80（http），可看到apache2欢迎界面</p><p>apache2默认网站目录位于&#x2F;var&#x2F;www&#x2F;html，默认配置文件位于&#x2F;etc&#x2F;apache2&#x2F;sites-enabled下的json文件</p><h2 id="2-安装WordPress"><a href="#2-安装WordPress" class="headerlink" title="2 安装WordPress"></a>2 安装WordPress</h2><p>WordPress官网：<a href="https://cn.wordpress.org/">博客工具、发布平台和内容管理系统 – WordPress.org China 简体中文</a></p><p>点击&#8221;获取WordPress“，下载WordPress，全部解压至&#x2F;var&#x2F;www&#x2F;html，并查看安装指南</p><p>安装mariadb数据库</p><pre class="wp-block-code"><code>sudo apt install mariadb-servermariadb --version</code></pre><p>若出现最后出现mariadb版本号，即为安装成功</p><p>phpmyadmin官网：<a href="https://www.phpmyadmin.net/">phpMyAdmin</a></p><p>点击Download，建议选择<a href="https://files.phpmyadmin.net/phpMyAdmin/5.2.2/phpMyAdmin-5.2.2-all-languages.zip">phpMyAdmin-****-all-languages.zip</a>，下载后解压至&#x2F;var&#x2F;www&#x2F;html&#x2F;phpmyadmin</p><p>后面mariadb，wordpress的配置步骤建议参考<a href="https://zhuanlan.zhihu.com/p/165123275">树莓派+wordpress搭建个人网页&#x2F;博客 &#8211; 知乎</a> 1-3节内容（不用管nginx配置，我们使用的是apache2，兼容php，无需额外配置）</p><h2 id="3-搭建内网穿透，实现外网访问"><a href="#3-搭建内网穿透，实现外网访问" class="headerlink" title="3 搭建内网穿透，实现外网访问"></a>3 搭建内网穿透，实现外网访问</h2><h3 id="3-1-ngrok配置（不建议使用）"><a href="#3-1-ngrok配置（不建议使用）" class="headerlink" title="3.1 ngrok配置（不建议使用）"></a>3.1 ngrok配置（不建议使用）</h3><p>最开始使用ngrok（现在看来十分不推荐！！！一个月1GB流量限制，https经常会出莫名其妙的问题，不利于NextCloud文件同步）：<a href="https://dashboard.ngrok.com/">https://dashboard.ngrok.com/</a></p><p>下载ngrok linux客户端（超级慢）</p><pre class="wp-block-code"><code>sudo apt install ngrok</code></pre><p>点击getting started，并选择Raspberry Pi，找到<figure class="wp-block-image size-full"></p><p><img loading="lazy" decoding="async" src="https://www.fc.cloudns.ch/wp-content/uploads/2025/07/image-5.png" alt="" /></figure> </p><p>复制下方指令并执行以绑定账户</p><p>回到官网，点击左边Domains，点击NewDomain，会生成个人域名（超长难记），回到Setup&amp;Installation，选择Raspberry Pi，找到<figure class="wp-block-image size-full"></p><p><img loading="lazy" decoding="async" src="https://www.fc.cloudns.ch/wp-content/uploads/2025/07/image-6.png"/></figure> </p><p>运行下方指令即可从外部域名访问网站</p><h3 id="3-2-通过ChmlFrp-Cloudns域名或ChmlFrp免费域名"><a href="#3-2-通过ChmlFrp-Cloudns域名或ChmlFrp免费域名" class="headerlink" title="3.2 通过ChmlFrp+Cloudns域名或ChmlFrp免费域名"></a>3.2 通过ChmlFrp+Cloudns域名或ChmlFrp免费域名</h3><ol class="wp-block-list">  <li>    ChmlFrp官网：<a href="https://www.chmlfrp.cn/"></a><a href="https://www.chmlfrp.cn/">ChmlFrp | 内网穿透 &#8211; 免费,高速,稳定,不限流量的端口映射工具。</a>  </li>  <li>    Cloudns（可访问，但添加域名与解析记录需要魔法上网）：<a href="https://www.cloudns.net/main/lang/chs/">ClouDNS: 控制面板</a>  </li></ol><h4 id="3-2-1-安装frp客户端"><a href="#3-2-1-安装frp客户端" class="headerlink" title="3.2.1 安装frp客户端"></a>3.2.1 安装frp客户端</h4><p>点击 隧道管理&#x3D;&gt;软件下载 选择 Linux，复制arm64地址，下载，解压至&#x2F;home&#x2F;自己的用户 文件夹，重命名为ChmlFrp</p><h4 id="3-2-2-配置隧道"><a href="#3-2-2-配置隧道" class="headerlink" title="3.2.2 配置隧道"></a>3.2.2 配置隧道</h4><p>点击 隧道管理&#x3D;&gt;隧道列表&#x3D;&gt;添加隧道，选择可建站非大陆节点（大陆节点需要工信部备案）</p><ol class="wp-block-list">  <li>    端口类型 http  </li>  <li>    内外端口 80  </li>  <li>    域名类型 免费域名（正在维护）/自定义域名（先阅读3.2.2.1！）  </li></ol><p>记住此处CNAME解析域名（不同节点域名不同)：  </p><figure class="wp-block-image size-full"><p><img loading="lazy" decoding="async" src="https://www.fc.cloudns.ch/wp-content/uploads/2025/07/image-7.png" /></figure> </p><p>创建完成后，点击右下角小扳手，获取配置代码，复制frpc.ini配置，并将其写入frpc客户点目录下的frpc.ini</p><h5 id="3-2-2-1-获得Cloudns免费域名（需要魔法）"><a href="#3-2-2-1-获得Cloudns免费域名（需要魔法）" class="headerlink" title="3.2.2.1 获得Cloudns免费域名（需要魔法）"></a>3.2.2.1 获得Cloudns免费域名（需要魔法）</h5><p>点击右上角国旗更改语言，注册登录账户，点击DNS托管下的创建区域&#x3D;&gt;免费区域，创建域名后，会进入如图界面<figure class="wp-block-image size-large"></p><p><img loading="lazy" decoding="async" width="1024" height="409" src="https://www.fc.cloudns.ch/wp-content/uploads/2025/07/image-8-1024x409.png" /></figure> </p><p>点击右下角添加新记录</p><ol class="wp-block-list">  <li>    类型：CNAME  </li>  <li>    主机：自定义即可（要填在3.2.2中的域名）  </li>  <li>    指向到：3.2.2中记住的解析地址  </li></ol><h6 id="3-2-2-1-1-拓展：使用Cloudflare双向解析"><a href="#3-2-2-1-1-拓展：使用Cloudflare双向解析" class="headerlink" title="3.2.2.1.1 拓展：使用Cloudflare双向解析"></a>3.2.2.1.1 拓展：使用Cloudflare双向解析</h6><p><a href="https://dash.cloudflare.com/">Cloudflare Dashboard | Manage Your Account</a></p><p>在Cloudns仪表盘中删除所有默认NS记录，保留CNAME记录</p><p>按照Cloudflare Dashboard指引创建新NS记录，并在DNS&#x3D;&gt;记录 中加入相同的CNAME记录，可开启其他优化选项</p><h4 id="3-2-3-设置frp客户端自启动"><a href="#3-2-3-设置frp客户端自启动" class="headerlink" title="3.2.3 设置frp客户端自启动"></a>3.2.3 设置frp客户端自启动</h4><p>利用crontab自动任务实现</p><pre class="wp-block-code"><code>sudo crontab -e</code></pre><p>写入以下指令：</p><pre class="wp-block-code"><code>@reboot sudo nohup sudo ngrok ***** //ngrok指令30/* * * * * sudo nohup sudo ChmlFrp客户端目录/frpc -c frpc.ini目录</code></pre><p>Ctrl+O 回车保存 ctrl+x 退出</p><h3 id="3-3-使用Cloudflare-Tunnel-ClouDNS免费域名"><a href="#3-3-使用Cloudflare-Tunnel-ClouDNS免费域名" class="headerlink" title="3.3 使用Cloudflare Tunnel+ClouDNS免费域名"></a>3.3 使用Cloudflare Tunnel+ClouDNS免费域名</h3><p>申请免费域名后，按照Cloudflare指引配置NS服务器</p><p>打开个人主页，点击Zero Truse，选择网络-&gt;Tunnels，添加Tunnel，并安装Cloudflare客户端，配置端口</p><p>注意！ClouDNS需要双向解析！推荐按照图片配置：  </p><figure class="wp-block-image size-large is-resized"><p><img loading="lazy" decoding="async"  src="https://www.fc.cloudns.ch/wp-content/uploads/2025/08/image-9-edited.png"/></figure> </p><p>Cloudflare中添加CNAME解析，域名为resolve，目标：resolve.cloudflare.182682.xyz</p><p>（加速IP）</p><h2 id="4-启用https访问"><a href="#4-启用https访问" class="headerlink" title="4 启用https访问"></a>4 启用https访问</h2><h3 id="4-1-使用Let’s-Encrypt免费SSL证书"><a href="#4-1-使用Let’s-Encrypt免费SSL证书" class="headerlink" title="4.1 使用Let’s Encrypt免费SSL证书"></a>4.1 使用Let’s Encrypt免费SSL证书</h3><p>我们使用Certbot进行签名</p><pre class="wp-block-code"><code>sudo apt install certbot</code></pre><p>安装好后执行</p><pre class="wp-block-code"><code>sudo certbot --apache</code></pre><p>选择你要签名的网站，回车，经过一系列杂七杂八的自动验证后会自动申请到SSL证书，并提供https的apache2配置，这里我们就可以更新ChmlFrp的隧道配置了</p><blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">  <p>    如果验证失败，请检查你的网站是否能通过公网http访问到  </p></blockquote><ol class="wp-block-list">  <li>    协议从https改为http  </li>  <li>    端口从80改为443  </li></ol><p>之后更新frpc.ini配置，并重启apache2服务</p><pre class="wp-block-code"><code>sudo systemctl restart apache2</code></pre><p>https就成功启用了</p><h3 id="4-2-使用Cloudflare"><a href="#4-2-使用Cloudflare" class="headerlink" title="4.2 使用Cloudflare"></a>4.2 使用Cloudflare</h3><p>启用Cloudflare SSL&#x2F;TLS加密即可，无需任何额外配置</p>]]>
+    </content>
+    <id>http://www.091209.xyz/2025/07/29/2025-07-29-https-wordpress/</id>
+    <link href="http://www.091209.xyz/2025/07/29/2025-07-29-https-wordpress/"/>
+    <published>2025-07-29T00:58:49.000Z</published>
+    <summary>
+      <![CDATA[<p>记录下自己的建站过程</p>
+<h2 id="1-Requirements-Preparations"><a href="#1-Requirements-Preparations" class="headerlink" title="1 Requirements]]>
+    </summary>
+    <title>Https WordPress建站完全指南</title>
+    <updated>2025-12-06T08:22:01.297Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Frank Fang</name>
+    </author>
+    <category term="Operating Systems" scheme="http://www.091209.xyz/tags/Operating-Systems/"/>
+    <content>
+      <![CDATA[<p><strong>Requirements:</strong></p><ul class="wp-block-list">  <li>    能够访问Github  </li>  <li>    DiskGenius  </li>  <li>    BIOS支持64位UEFI（若不支持可参考下载链接中的教程）  </li></ul><p><strong>1.下载</strong><br>必须：<a href="https://github.com/M-L-P/grub2-fyde">Grub2 Fyde&nbsp;2</a></p><ul class="wp-block-list">  <li>    BIOS支持64位UEFI：<a href="https://github.com/M-L-P/Yours-UEFI">Yours UEFI 1</a>  </li>  <li>    不支持：<a href="https://github.com/M-L-P/Yours-LegacyBIOS">Yours LegacyBIOS</a>  </li></ul><p>（在此感谢上方Github仓库的贡献者！）<br>下载最新Release压缩包并解压</p><p><strong>2.安装EFI文件 （以下以支持64位UEFI为例）</strong><br>打开DiskGenius，选择SYSTEM_DRV分区并打开<br>按照以下步骤复制文件：</p><blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">  <p>    注意：若想保留Windows原引导，忽略删除EFI\Boot步骤，并将压缩包中Boot中的Bootx64.efi更名为其他名称，否则Windows容易PIN码失效  </p></blockquote><p>Yours-UEFI:<figure class="wp-block-image size-full"></p><p><img loading="lazy" decoding="async"  src="https://www.fc.cloudns.ch/wp-content/uploads/2025/07/image.png" /></figure> </p><p>Grub2-Fyde:  </p><figure class="wp-block-image size-full"><p><img loading="lazy" decoding="async"  src="https://www.fc.cloudns.ch/wp-content/uploads/2025/07/image-1.png" /></figure> </p><p><strong>3.调整引导顺序并安装证书</strong><br>在DiskGenius中转到&#8221;工具&#x3D;&gt;设置UEFI BIOS启动项&#8221;，按照图示新增&#x2F;修改原Windows引导项</p><blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">  <p>    若不保留Windows原引导，请将启动文件替换为\EFI\Boot\Bootx64.efi  </p></blockquote><figure class="wp-block-image size-full"><p><img loading="lazy" decoding="async" src="https://www.fc.cloudns.ch/wp-content/uploads/2025/07/屏幕截图-2025-07-21-191433.png"  /></figure> </p><p>点击保存后，勾选“下次启动时…”，或将该启动项移至最前面，关闭电脑<br>在BIOS中暂时禁用安全启动（Secure Boot）<br>开机后，出现MokManager页面<figure class="wp-block-image size-full"></p><p><img loading="lazy" decoding="async"  src="https://www.fc.cloudns.ch/wp-content/uploads/2025/07/image-2.png" /></figure> </p><p>选择OK<figure class="wp-block-image size-full"></p><p><img loading="lazy" decoding="async"  src="https://www.fc.cloudns.ch/wp-content/uploads/2025/07/image-3.png"  /></figure> </p><p>按下任意键</p><p>选择Enroll key from disk<br>接下来找到ENROLL_THIS_KEY_IN_MOKMANAGER.cer，回车，选择Continue&#x3D;&gt;Yes&#x3D;&gt;Reboot<br>在BIOS中开启安全启动后，即可正常进入引导界面<figure class="wp-block-image size-full"></p><p><img loading="lazy" decoding="async" src="https://www.fc.cloudns.ch/wp-content/uploads/2025/07/image-4.png"  /></figure> </p><p>选择FydeOS，回车，之后即可在安全启动下正常使用FydeOS<br>之后的引导界面自定义可参考<a href="https://github.com/M-L-P/rEFInd-theme-Yours">rEFInd-theme-Yours&nbsp;</a></p>]]>
+    </content>
+    <id>http://www.091209.xyz/2025/07/26/2025-07-26-fydeos-uefi/</id>
+    <link href="http://www.091209.xyz/2025/07/26/2025-07-26-fydeos-uefi/"/>
+    <published>2025-07-26T04:33:41.000Z</published>
+    <summary>
+      <![CDATA[<p><strong>Requirements:</strong></p>
+<ul class="wp-block-list">
+  <li>
+    能够访问Github
+  </li>
+  <li>
+    DiskGenius
+  </li>
+  <li>]]>
+    </summary>
+    <title>用rEFInd-theme-Yours解决FydeOS UEFI安全启动问题</title>
+    <updated>2025-12-06T08:21:55.801Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Frank Fang</name>
+    </author>
+    <category term="C++" scheme="http://www.091209.xyz/tags/C/"/>
+    <category term="Visual Studio Code" scheme="http://www.091209.xyz/tags/Visual-Studio-Code/"/>
+    <content>
+      <![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>之前用的IDE是Dev-C++，感觉界面比较难看，所以就想在VSCode里配置一个C++开发环境。</p><h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>TDM-GCC编译器（啥版本都行）</p><h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><h2 id="下载扩展"><a href="#下载扩展" class="headerlink" title="下载扩展"></a>下载扩展</h2><p>在VSCode扩展市场中下载下列扩展</p><table><thead><tr><th>扩展名称</th><th>作者</th><th>作用</th></tr></thead><tbody><tr><td>C&#x2F;C++</td><td>Microsoft</td><td>语法高亮、代码提示等基础功能</td></tr><tr><td>C&#x2F;C++ Extension Pack</td><td>Microsoft</td><td>开发工具包</td></tr><tr><td>C&#x2F;C++ Compile Run</td><td>danielpinto8zz6</td><td>编译运行</td></tr></tbody></table><blockquote><p>官方扩展配置太复杂，所以选用了更简单的扩展</p></blockquote><h2 id="开始配置"><a href="#开始配置" class="headerlink" title="开始配置"></a>开始配置</h2><p>打开设置，分别找到扩展&gt;Compile Run Configuration，在C-Compiler中填入C语言编译器（编译器路径&#x2F;bin&#x2F;gcc.exe），在Cpp-Compiler中填入C++编译器（编译器路径&#x2F;bin&#x2F;g++.exe），其他的可以默认，有特殊需求的话可以看一看扩展信息（C&#x2F;C++ Compile Run的）</p><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>我们写个简单的程序测试一下</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">    cout &lt;&lt; &quot;Hello,world!&quot;;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>按下<strong>F6或F7</strong>进行编译</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello,world!</span><br></pre></td></tr></table></figure><p>好耶ヾ(✿ﾟ▽ﾟ)ノ！</p>]]>
+    </content>
+    <id>http://www.091209.xyz/2022/04/12/vscode-cpp/</id>
+    <link href="http://www.091209.xyz/2022/04/12/vscode-cpp/"/>
+    <published>2022-04-12T01:01:15.000Z</published>
+    <summary>
+      <![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>之前用的IDE是Dev-C++，感觉界面比较难看，所以就想在VSCode里配置一个C++开发环境。</p>
+<h1 id="准备"><a]]>
+    </summary>
+    <title>如何在Visual Studio Code中配置C/C++开发环境</title>
+    <updated>2025-12-06T08:23:07.048Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Frank Fang</name>
+    </author>
+    <category term="Python" scheme="http://www.091209.xyz/tags/Python/"/>
+    <content>
+      <![CDATA[<h1 id="问题概述"><a href="#问题概述" class="headerlink" title="问题概述"></a>问题概述</h1><p>在Label中放置PhotoImage时报错：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&quot;, line 1921, in __call__</span><br><span class="line">    return self.func(*args)</span><br><span class="line">  File &quot;f:\Windows\桌面\tst.py&quot;, line 7, in newwindow</span><br><span class="line">    l = Label(anotherwindow,image=img)</span><br><span class="line">  File &quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&quot;, line 3177, in __init__</span><br><span class="line">    Widget.__init__(self, master, &#x27;label&#x27;, cnf, kw)</span><br><span class="line">  File &quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&quot;, line 2601, in __init__</span><br><span class="line">    self.tk.call(</span><br><span class="line">_tkinter.TclError: image &quot;pyimage1&quot; doesn&#x27;t exist</span><br></pre></td></tr></table></figure><p>代码如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from tkinter import *</span><br><span class="line">root = Tk()</span><br><span class="line">def newwindow():</span><br><span class="line">    global anotherwindow</span><br><span class="line">    anotherwindow = Tk()</span><br><span class="line">    img = PhotoImage(file=&quot;image.png&quot;)</span><br><span class="line">    l = Label(anotherwindow,image=img)</span><br><span class="line">    l.pack()</span><br><span class="line">    anotherwindow.mainloop()</span><br><span class="line">bu = Button(root,text=&quot;你过来呀&quot;,command=newwindow)</span><br><span class="line">bu.pack()</span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure><h1 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h1><h2 id="第一种办法：将PhotoImage的定义挪到函数外"><a href="#第一种办法：将PhotoImage的定义挪到函数外" class="headerlink" title="第一种办法：将PhotoImage的定义挪到函数外"></a>第一种办法：将PhotoImage的定义挪到函数外</h2><p>修改为：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from tkinter import *</span><br><span class="line">root = Tk()</span><br><span class="line">img = PhotoImage(file=&quot;image.png&quot;)</span><br><span class="line">def newwindow():</span><br><span class="line">    global anotherwindow,img</span><br><span class="line">    anotherwindow = Tk()</span><br><span class="line">    l = Label(anotherwindow,image=img)</span><br><span class="line">    l.pack()</span><br><span class="line">    anotherwindow.mainloop()</span><br><span class="line">bu = Button(root,text=&quot;你过来呀&quot;,command=newwindow)</span><br><span class="line">bu.pack()</span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure><p>结果依然报错：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&quot;, line 1921, in __call__</span><br><span class="line">    return self.func(*args)</span><br><span class="line">  File &quot;f:\Windows\桌面\tst.py&quot;, line 7, in newwindow</span><br><span class="line">    l = Label(anotherwindow,image=img)</span><br><span class="line">  File &quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&quot;, line 3177, in __init__</span><br><span class="line">    Widget.__init__(self, master, &#x27;label&#x27;, cnf, kw)</span><br><span class="line">  File &quot;C:\Users\lenovo3c\AppData\Local\Programs\Python\Python310\lib\tkinter\__init__.py&quot;, line 2601, in __init__</span><br><span class="line">    self.tk.call(</span><br><span class="line">_tkinter.TclError: image &quot;pyimage1&quot; doesn&#x27;t exist</span><br></pre></td></tr></table></figure><p>为什么呢？这就要用到第二种办法了</p><h2 id="第二种办法：子窗口改用Toplevel（基于第一种方法）"><a href="#第二种办法：子窗口改用Toplevel（基于第一种方法）" class="headerlink" title="第二种办法：子窗口改用Toplevel（基于第一种方法）"></a>第二种办法：子窗口改用Toplevel（基于第一种方法）</h2><p>修改为：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from tkinter import *</span><br><span class="line">root = Tk()</span><br><span class="line">img = PhotoImage(file=&quot;image.png&quot;)</span><br><span class="line">def newwindow():</span><br><span class="line">    global anotherwindow,img</span><br><span class="line">    anotherwindow = Toplevel()</span><br><span class="line">    l = Label(anotherwindow,image=img)</span><br><span class="line">    l.pack()</span><br><span class="line">bu = Button(root,text=&quot;你过来呀&quot;,command=newwindow)</span><br><span class="line">bu.pack()</span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure><p>终于不报错了！<br>其实还有一个方法</p><h2 id="第三种方法：将Label放入Frame或LabelFrame中（基于第一种方法）"><a href="#第三种方法：将Label放入Frame或LabelFrame中（基于第一种方法）" class="headerlink" title="第三种方法：将Label放入Frame或LabelFrame中（基于第一种方法）"></a>第三种方法：将Label放入Frame或LabelFrame中（基于第一种方法）</h2><p>这种办法不适合这种情景，让我们换一个：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">starting = Tk()</span><br><span class="line">starting.after(3000,starting.destroy)</span><br><span class="line">starting.mainloop()</span><br><span class="line">cfgfinished = False</span><br><span class="line">configure = Tk()</span><br><span class="line">BG = PhotoImage(file=&quot;background\iMac 2021 Green_1.png&quot;)</span><br><span class="line">bgl = Label(configure,image=BG)</span><br><span class="line">bgl.pack()</span><br><span class="line">configure.mainloop()</span><br></pre></td></tr></table></figure><p>不知道为啥，已经distroy了依然报错<br>我们改成这样：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">starting = Tk()</span><br><span class="line">starting.after(3000,starting.destroy)</span><br><span class="line">starting.mainloop()</span><br><span class="line">cfgfinished = False</span><br><span class="line">configure = Tk()</span><br><span class="line">fr = Frame(configure)</span><br><span class="line">fr.place(x=0,y=0)</span><br><span class="line">BG = PhotoImage(file=&quot;background\iMac 2021 Green_1.png&quot;)</span><br><span class="line">bgl = Label(fr,image=BG)</span><br><span class="line">bgl.pack()</span><br><span class="line">configure.mainloop()</span><br></pre></td></tr></table></figure><hr><h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>遇到“unknown option “pyimage1&#x2F;2””时，首先检查PhotoImage是否定义在函数内（最最最重要），再将根窗口内mainloop过程中的其他窗口统统改为Toplevel，如果还不行，就把Label放到随便一个框架里。</p>]]>
+    </content>
+    <id>http://www.091209.xyz/2022/04/11/tkinter-error/</id>
+    <link href="http://www.091209.xyz/2022/04/11/tkinter-error/"/>
+    <published>2022-04-11T07:24:53.000Z</published>
+    <summary>
+      <![CDATA[<h1 id="问题概述"><a href="#问题概述" class="headerlink" title="问题概述"></a>问题概述</h1><p>在Label中放置PhotoImage时报错：</p>
+<figure class="highlight]]>
+    </summary>
+    <title>Tkinter报错“unknown option &quot;pyimage1/2&quot;”的解决办法</title>
+    <updated>2025-12-06T08:23:04.998Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>Frank Fang</name>
+    </author>
+    <category term="Python" scheme="http://www.091209.xyz/tags/Python/"/>
+    <content>
+      <![CDATA[<h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><p>最近突发奇想，想用Python做一个库发到Pypi上，就到网上找了一篇教程，下面跟大家分享一下（转载，有较大的改动，原文在文末）</p><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>必须安装Python3，并确保可以使用pip工具！CMD中执行：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install --user --upgrade setuptools wheel</span><br><span class="line">pip install --user --upgrade twine</span><br></pre></td></tr></table></figure><h2 id="注册Pypi账号"><a href="#注册Pypi账号" class="headerlink" title="注册Pypi账号"></a>注册Pypi账号</h2><p><a href="http://pypi.org/">http://pypi.org</a></p><h2 id="编写Python库程序（单独文件夹中）"><a href="#编写Python库程序（单独文件夹中）" class="headerlink" title="编写Python库程序（单独文件夹中）"></a>编写Python库程序（单独文件夹中）</h2><p>不再赘述</p><h2 id="打包并上传"><a href="#打包并上传" class="headerlink" title="打包并上传"></a>打包并上传</h2><p>在文件夹下创建setup.py，并写入以下代码</p></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import setuptools</span><br><span class="line"></span><br><span class="line">with open(&quot;README.md&quot;, &quot;r&quot;) as fh:</span><br><span class="line">  long_description = fh.read()</span><br><span class="line"></span><br><span class="line">setuptools.setup(</span><br><span class="line">  name=&quot;库名&quot;,</span><br><span class="line">  version=&quot;版本&quot;,</span><br><span class="line">  author=&quot;作者&quot;,</span><br><span class="line">  author_email=&quot;邮箱&quot;,</span><br><span class="line">  description=&quot;简介&quot;,</span><br><span class="line">  long_description=long_description,</span><br><span class="line">  long_description_content_type=&quot;text/markdown&quot;,</span><br><span class="line">  url=&quot;github开源地址&quot;,</span><br><span class="line">  packages=setuptools.find_packages(),</span><br><span class="line">  classifiers=[</span><br><span class="line">  &quot;Programming Language :: Python :: 3&quot;,  #Python版本</span><br><span class="line">  &quot;License :: OSI Approved :: MIT License&quot;,  #开源许可</span><br><span class="line">  &quot;Operating System :: OS Independent&quot;,  #系统要求</span><br><span class="line">  ],</span><br><span class="line">)</span><br></pre></td></tr></table></figure><p>创建README.md，写入项目详细信息（Markdown格式），创建licence.md，写入开源许可证内容<br>CMD cd到库文件夹，输入以下指令（注意，最后一步会要求输入Pypi账号密码）：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python setup.py sdist bdist_wheel</span><br><span class="line">python twine upload dist/*</span><br></pre></td></tr></table></figure><h2 id="测试安装库"><a href="#测试安装库" class="headerlink" title="测试安装库"></a>测试安装库</h2><p>CMD输入指令</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install 库名</span><br></pre></td></tr></table></figure><p>如果安装成功了，就说明我们的库上传成功了<br>原文：<a href="https://zhuanlan.zhihu.com/p/60836179">https://zhuanlan.zhihu.com/p/60836179</a></p>]]>
+    </content>
+    <id>http://www.091209.xyz/2021/03/01/python-package/</id>
+    <link href="http://www.091209.xyz/2021/03/01/python-package/"/>
+    <published>2021-03-01T12:11:50.000Z</published>
+    <summary>
+      <![CDATA[<h1 id="概要"><a href="#概要" class="headerlink"]]>
+    </summary>
+    <title>Python库的创建</title>
+    <updated>2025-12-06T08:22:58.681Z</updated>
+  </entry>
+</feed>
