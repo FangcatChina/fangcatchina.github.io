@@ -1,0 +1,3 @@
+var posts=["2025/07/26/2025-07-26-fydeos-uefi/","2025/07/29/2025-07-29-https-wordpress/","2025/08/14/2025-08-14-unpopular-fydeos/","2025/08/19/2025-08-19-cloudflare-zero-trust-warp/","2025/09/11/HjmnFla6g-/","2026/04/03/blissos/","2026/03/25/davinci-fedora/","2025/10/02/fydeos-gapp-install/","2025/10/03/linux-easy/","2026/03/14/linux-is-not-god/","2021/03/01/python-package/","2026/04/25/rocky-thx/","2022/04/11/tkinter-error/","2022/04/12/vscode-cpp/"];function toRandomPost(){
+    pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);
+  };
