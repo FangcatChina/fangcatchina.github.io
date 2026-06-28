@@ -1,0 +1,540 @@
+<!DOCTYPE html><html lang="zh-cn" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>什么是“原子系统”？ | Frank's Blog</title><meta name="keywords" content="Operating Systems,Videos"><meta name="author" content="Frank Fang"><meta name="copyright" content="Frank Fang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="什么是“原子系统”？"><meta name="application-name" content="什么是“原子系统”？"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="什么是“原子系统”？"><meta property="og:url" content="http://www.091209.xyz/2026/06/28/atomic-os/index.html"><meta property="og:site_name" content="Frank's Blog"><meta property="og:description" content="原子隐私，原子内存，原子服务…近些年，各大品牌厂商都在疯狂宣发自己的“原子项目”。不过，相较与20年前的一篇计算机博士论文，以及现在的各大GNU&amp;#x2F;Linux发行版，这些概念却显得尤为落后。今天，就让我们来聊聊“原子系统” (Atomic Operating System)。事先声明：我们所"><meta property="og:locale" content="zh-cn"><meta property="og:image" content="http://www.091209.xyz/post-images/atomic-os.png"><meta property="article:author" content="Frank Fang"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="http://www.091209.xyz/post-images/atomic-os.png"><meta name="description" content="原子隐私，原子内存，原子服务…近些年，各大品牌厂商都在疯狂宣发自己的“原子项目”。不过，相较与20年前的一篇计算机博士论文，以及现在的各大GNU&amp;#x2F;Linux发行版，这些概念却显得尤为落后。今天，就让我们来聊聊“原子系统” (Atomic Operating System)。事先声明：我们所"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://www.091209.xyz/2026/06/28/atomic-os/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: {"mode":"both","api":"https://img2color.fcnx.dpdns.org/api?img=","cover_change":true},
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Frank Fang","link":"链接: ","source":"来源: Frank's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Frank\'s Blog',
+  title: '什么是“原子系统”？',
+  postAI: '',
+  pageFillDescription: '1. 为何原子？（Nix）, 2. 何为原子？, 3. 原子与函数（Nix）, 4. 更多风味, 4.1. 用 Git 管理原子（OSTree）, 4.2. 双重身份（ABRoot 及其类似物）, 4.3. 应用层的原子化 (FlatpakampAppImage), 5. 总结原子隐私原子内存原子服务近些年各大品牌厂商都在疯狂宣发自己的原子项目不过相较与年前的一篇计算机博士论文以及现在的各大发行版这些概念却显得尤为落后今天就让我们来聊聊原子系统事先声明我们所聊到的原子是指操作系统层面上的原子化前面提到的那些噱头我们这里并不会作太多详细介绍那么就让我们走进操作系统的发展浪潮来看看这个时代前沿究竟是什么为何原子先问你一个问题你有没有过这样的经历在上想装个软件终端里敲下指令结果弹出一串红色报错费了半天劲把所需的依赖库装上结果另一个软件又因为依赖冲突炸了如果你有过这种体验那么你也是依赖地狱的受害者年一位名叫的年轻人在使用时也敏锐地察觉到了这个问题大多数操作系统对依赖冲突的处理极其不完备甚至可以说压根没怎么处理某些软件因为依赖库版本需求不同而无法共存这给开发者和用户带来了巨大的不便类似的并不允许两个包含相同路径名称的软件包同时存在于系统中总体来说这意味着我们不能同时安装相同组件的多个版本这也意味着对于多用户系统来说独立地选择安装管理软件并不容易来自和也好不到哪里去打开某些软件的安装目录一大堆库映入眼帘令人感到头皮发麻与不同不倾向于使用包管理器去统一管理软件包与库的关系用软件自带所需库的方式来解决依赖问题这虽然在一定程度上缓解了依赖冲突却导致依赖库在各个应用之间重复打包磁盘占用率飙升想亲身实践的可以自己统计你的系统里有多少和与倾向于使用单体式部署某些大型依赖除外例如内核中的核心库或依赖库更倾向于作为应用本身的一部分而分发应用之间不存在依赖共享来自不仅仅是安装软件时的依赖问题即使对于一个已经装好的系统也存在不可复现的麻烦导致重装系统时你得导出你所有的软件包名单挨个安装这个过程费时费力到令人抓狂开发者在开发应用时也无法保证客户端的运行状况由于测试环境可能提供和被声明作为依赖的组件不同的依赖一个组件能在测试环境中运行的事实并不能保证它也能在客户端侧运行结果就导致组件的组成不可复现在公共目录中安装组件如果升级导致错误的配置安装多个版本组件以及回滚到先前的配置就显得尤为困难来自而意识到现有的包管理方案再怎么修修补补都治不了根他需要一套全新的模型于是在年的博士论文纯函数式包管理模型发布这篇论文被视为原子系统的开山鼻祖他提出了一种极其前沿的包管理方案与传统包管理器相比能够完美处理依赖与干扰问题能够稳定复现而且不会像其他包管理器那样出现更新一半关机再打开软件就炸了的情形也使重装系统变成了复制粘贴一个配置文件的事那么这种如此强大的法术究竟由什么驱动呢何为原子学过初中化学的各位都知道原子是化学反应中不可再分的基本单位它难以拆分难以被更改没有半成品只有存在或不存在这两种状态这正是原子系统的核心不可分割用过的同学都知道如果安装了多个内核我们可以在引导系统时自由切换安装切换内核基本不会影响其他软件包对照原子性的定义来看编译后的内核不可拆分切换内核也不可能只切一半是的这就是一个典型的原子操作在原子系统中我们可以把内核操作系统应用数据比作相互包裹密不可分的洋葱每次更新系统或软件时每一层的核都只是被重新生成和替换并且原子系统绝不允许未完成的操作发生不会出现一颗老鼠屎坏了满锅粥的情况相比之下给普通系统安装软件就像在一张由上百块布料拼成的毯子上打补丁每次更换某块布料都可能对上层或下层的组件造成毁灭性打击容易造成不稳定的情况发生补充在现代包管理环境已经极少见到这种现象但仍然存在尤其是的包组而前面提到的某些厂商宣传的原子噱头本质上只是管理更精细一些然后取了个听起来高大上的名字跟真正的原子操作可以说是八竿子打不着这里也有一个常见的误区很多人以为原子系统是完全无法更改的根本上来讲那是不可变系统所以这种说法并不严谨比如会提供你可以方便快捷地调节系统大大小小的配置甚至在你完全掌握其语法参数后比通过其他途径更优雅以我自己为例我是个不太整洁的人每次装完一些软件包都会忘了卸载而在里这些原子就静静躺在配置文件里可以随时删除不会忘记十分舒适原子与函数注意以下内容可能会略显枯燥由于本人未在其他发行版上使用过下文可能会出现与混为一谈的现象还请批评指正以及的工作原理主要在的两篇论文中被完整阐释由于时间原因我没有办法详细阅读两篇文章的全部内容只读了部分具体的实现感兴趣的各位可以自行阅读余下的与在此我会尽可能简单地阐释不过也可能出现疏漏还请指正与其他发行版的分散式存储不同在中所有的软件包无论是可执行文件还是源码均存在于系统的中央仓库里由统一管理在这个目录下每个软件都被当作一个原子并不关心这个原子里面有什么它只需要知道这个原子应该与哪些原子相关联乍一看这比普通的包管理器只是多了一个统一化管理不过还记得前面提到的完美避免依赖冲突吗这就要说到的另一精妙机制在每个原子构建时都会被打上一个哈希值这个哈希值由多种方式生成像身份证号一样具有唯一性基本不会出现撞车的问题因而多个版本多个来源的软件包可以和谐共存而且这个机制强制要求所有原子在构建时指定依赖的完整路径从此不再有找不到依赖的问题哈希串的唯一性也赋予了其快速精确查找的能力不需要去理解一个文件只需要记录并扫描其依赖的哈希串就能自动找到它这和计算机编程中的函数思想完全一致我不关心你是什么我只关心我需要给你什么你会给我吐出什么简单粗暴优雅快捷我们展现了一个具有完整功能的发行版它能够被用声明的方式采用从纯粹函数式语言借来的原则被构建与配置从而实现升级的原子性以及回滚能力等特性来自至于它比更加激进仅仅将软件层原子化而把系统本身也作为一个原子和软件包一样进行管理继承了多版本共存的特性其版本在此被称为世代不同的是对用户来说自己从使用者转变为了构建者设置系统前需要学习一门截然不同的编程语言自行修改配置文件重新构建系统学习难度直线上升更别提等花样用法了不过并不是原子系统唯一的出路更多风味用管理原子众所周知是目前业界公认的成熟的版本控制系统多数大型项目如内核等均使用进行管理首先给一些不了解的读者澄清一个误区尽管在时会显示改动文件的差异但它并不通过这些差异存储文件而是通过给每个版本存快照的方式存储那么我们能否用来管理原子系统年工程师受启发创造性地提出了这一原子系统概念与的思想几乎完全相同最初被应用于后来推广到等发行版与应用框架的最大特点是可以随时远程拉取自由切换系统版本而不必担心系统软件包的版本问题每次更新都会进行增量更新并且系统文件只读不允许随意修改相比操作更加简单便捷容易理解不过相比于其不可变性明显较为劣势并且由于只原子化了系统层面并没有对所有软件进行原子化依赖冲突还是不可避免地会出现双重身份及其类似物年推出随之而来的是一种崭新的原子更新方式其本质上就是在本地磁盘保存当前操作系统的两个副本且均为只读比如我正在使用分区更新时对系统的改动会写入分区这样一来改动不会影响当前正在使用的分区只需重启即可完成更新即使更新失败也不会影响原先的分区可以自动回滚便捷又安全后来也将类似的思路推广到了即无缝更新不过要注意的更新通常采用增量方式而非每次下载完整的系统镜像但双分区可回滚的核心思想是一致的可以说原子系统的应用非常广泛类似的采用的是本质相同双分区自动回滚设计缺点是磁盘空间会多出一些占用但总体在可接受范围内插一句题外话使用自制的作为用户级应用管理器能够兼容等多种包管理器与格式并且主要推广进行应用管理十分前沿新颖可惜的是采用镜像发布需要进行网络安装应用也存在中文字体剪贴板同步等小毛病有意思的是也采用了分区的更新机制不过其原子性明显不如上面提到的其他系统可复现性也十分有限由于后两种风味我本人并没有使用过此处不做比较与进一步评价应用层的原子化严格来说和并不算原子系统因为它们只原子化了应用层而非整个操作系统但它们身上确实闪耀着原子化的思想可以称为一个文件就是一个应用所有依赖都打包在里面下载加执行权限双击运行没有依赖冲突甚至不需要安装这个动作应用与运行时分离每个应用只能看到自己的沙箱和自己的依赖副本更新时下载完整的新镜像支持多版本运行时共存它们与的根本区别在于粒度原子化了整个系统而只管用户应用系统本身的更新仍然依赖传统的包管理器除由管理的发行版又因为几乎不共享依赖通过运行时共享依赖依赖地狱也被完美解决不过对于普通用户来说和可能是最早接触到的原子化体验装个不用装依赖这就是原子理念在应用层的胜利总结回望操作系统半个多世纪的发展历程每一次重大的技术变革本质上都是对复杂性的一次重新定义和管理从批处理系统到分时系统从单任务到多任务从单体内核到微内核人类一直在试图驯服计算机系统这头日益复杂的野兽原子操作系统的出现正是这场持续斗争中最新也可能是最彻底的一次尝试但我们也必须看到原子系统的劣势在里改设置需要更改一大段配置文件然后重新构建整个系统较为耗时存储空间易占用过大可能需经常清理世代某些闭源程序在原子系统上运行不稳定配置文件与系统构建与传统的逻辑完全不同不允许直接执行二进制程序需要修改配置文件或者构建包所以原子系统是一个有力的工具但它并非适合所有人所有场景它更像是一把双刃剑锋利精准但需要学习如何使用看到这里希望各位能对原子系统有一个更全面更辨证的认识它既有令人惊叹的魅力也有不可忽视的代价愿原子系统在日新月异的数字世界里继续演进同时也希望未来的某一天会有更多的社区贡献者来挑战它今天留下的难题',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-06-28 13:33:58',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="Frank's Blog" type="application/atom+xml">
+</head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="/img/avatar.png"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Frank's Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><span> 隧道</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><span> 关于本人</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:toRandomPost()"><span> 随便逛逛</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="Random Post" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="Console" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">Interaction</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">Interests</div><span class="author-content-item-title">Find your area of interest</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 1.05rem;">C++<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 1.05rem;">Linux<sup>5</sup></a><a href="/tags/Operating-Systems/" style="font-size: 1.05rem;">Operating Systems<sup>10</sup></a><a href="/tags/Python/" style="font-size: 1.05rem;">Python<sup>2</sup></a><a href="/tags/Videos/" style="font-size: 1.05rem;">Videos<sup>6</sup></a><a href="/tags/Visual-Studio-Code/" style="font-size: 1.05rem;">Visual Studio Code<sup>1</sup></a><a href="/tags/Web/" style="font-size: 1.05rem;">Web<sup>2</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>Articles</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/06/"><span class="card-archive-list-date">六月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/04/"><span class="card-archive-list-date">四月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/03/"><span class="card-archive-list-date">三月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/04/"><span class="card-archive-list-date">四月 2022</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="Toggle Display Mode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="Toggle Sidebar"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="Toggle Music"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="Toggle"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Operating-Systems/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Operating Systems</span></a><a class="article-meta__tags" href="/tags/Videos/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Videos</span></a></span></div></div><h1 class="post-title" itemprop="name headline">什么是“原子系统”？</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-06-28T05:21:54.000Z" title="发表于 2026-06-28 13:21:54">2026-06-28</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-06-28T05:33:58.667Z" title="更新于 2026-06-28 13:33:58">2026-06-28</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">4.2k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为山东，威海"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>山东，威海</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/post-images/atomic-os.png"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://www.091209.xyz/2026/06/28/atomic-os/"><header><a href="/tags/Operating-Systems/" tabindex="-1" itemprop="url">Operating Systems</a><a href="/tags/Videos/" tabindex="-1" itemprop="url">Videos</a><h1 id="CrawlerTitle" itemprop="name headline">什么是“原子系统”？</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Frank Fang</span><time itemprop="dateCreated datePublished" datetime="2026-06-28T05:21:54.000Z" title="发表于 2026-06-28 13:21:54">2026-06-28</time><time itemprop="dateCreated datePublished" datetime="2026-06-28T05:33:58.667Z" title="更新于 2026-06-28 13:33:58">2026-06-28</time></header><p>原子隐私，原子内存，原子服务…近些年，各大品牌厂商都在疯狂宣发自己的“原子项目”。不过，相较与20年前的一篇计算机博士论文，以及现在的各大GNU&#x2F;Linux发行版，这些概念却显得尤为落后。今天，就让我们来聊聊“原子系统” (Atomic Operating System)。事先声明：我们所聊到的“原子”是指操作系统层面上的原子化，前面提到的那些“噱头”，我们这里并不会作太多详细介绍。那么，就让我们走进操作系统的发展浪潮，来看看这个“时代前沿”究竟是什么。</p>
+<h2 id="1-为何原子？（Nix）"><a href="#1-为何原子？（Nix）" class="headerlink" title="1. 为何原子？（Nix）"></a>1. 为何原子？（Nix）</h2><p>先问你一个问题：你有没有过这样的经历——在 Linux 上想装个软件，终端里敲下指令，结果弹出一串红色报错，费了半天劲把所需的依赖库装上，结果另一个软件又因为依赖冲突炸了。</p>
+<p>如果你有过这种体验，那么你也是 <strong>“依赖地狱（Dependency Hell）”</strong> 的受害者。</p>
+<p>2003 年，一位名叫 Eelco Dolstra 的年轻人在使用 Linux 时，也敏锐地察觉到了这个问题。大多数操作系统对依赖冲突的处理极其不完备（甚至可以说压根没怎么处理）——某些软件因为依赖库版本需求不同而无法共存，这给开发者和用户带来了巨大的不便：</p>
+<blockquote>
+<p>Similarly, RPM does not allow two packages that contain files with equal path names to exist simultaneously in the system.<br>…<br>In general, this means that we cannot have multiple versions of the same component installed simultaneously. It also means that it is hard for multiple users to independently select, install and manage software.  </p>
+<p>类似的，RPM 并不允许两个包含相同路径名称的软件包同时存在于系统中。<br>…<br>总体来说，这意味着我们不能同时安装相同组件的多个版本。这也意味着对于多用户系统来说，独立地选择、安装、管理软件并不容易。<br>来自《The Purely Functional Software Deployment Model》，Eelco Dolstra</p>
+</blockquote>
+<p>Windows 和 macOS 也好不到哪里去。打开某些软件的安装目录，一大堆 DLL 库映入眼帘，令人感到头皮发麻。与 Linux 不同，Windows 不倾向于使用包管理器去统一管理软件包与库的关系，用软件自带所需库的方式来解决依赖问题，这虽然在一定程度上缓解了依赖冲突，却导致依赖库在各个应用之间重复打包，磁盘占用率飙升（PS:想亲身实践的可以自己统计你的系统里有多少chromium和7z.dll）：</p>
+<blockquote>
+<p>Windows and Mac OS X tend to use monolithic deployment for applications: except for some large-grained dependencies on the operating system environment (e.g., on the kernel, the core GUI libraries, or Direct X), dependencies tend to be distributed as part of the application itself, with no sharing of dependencies between applications.  </p>
+<p>Windows 与 Mac OS X 倾向于使用单体式部署——某些大型依赖除外（例如内核中的核心 GUI 库或 Direct X），依赖库更倾向于作为应用本身的一部分而分发，应用之间不存在依赖共享。<br>来自《The Purely Functional Software Deployment Model》，Eelco Dolstra</p>
+</blockquote>
+<p>不仅仅是安装软件时的依赖问题，即使对于一个已经装好的系统，也存在 <strong>“不可复现”</strong> 的麻烦，导致重装系统时你得导出你所有的软件包名单挨个安装，这个过程费时费力到令人抓狂，开发者在开发应用时也无法保证客户端的运行状况：</p>
+<blockquote>
+<p>The fact that a component works in a test environment, does not guarantee that it will work on a client site, since the test environment may provide components that are not explicitly declared as dependencies. As a consequence, component compositions are not <strong>reproducible</strong>. The installation of components in a common directory makes it hard to install multiple versions of a component or to roll back to a previous configuration if it turns out that upgrading produces a faulty configuration.  </p>
+<p>由于测试环境可能提供和被声明作为依赖的组件不同的依赖，一个组件能在测试环境中运行的事实，并不能保证它也能在客户端侧运行。结果就导致组件的组成<strong>不可复现</strong>。在公共目录中安装组件，如果升级导致错误的配置，安装多个版本组件以及回滚到先前的配置就显得尤为困难。<br>来自《The Purely Functional Software Deployment Model》，Eelco Dolstra</p>
+</blockquote>
+<p>而Eelco 意识到，现有的包管理方案再怎么修修补补，都治不了根。他需要一套全新的模型。于是在2006 年，Eelco 的博士论文 <strong>《纯函数式包管理模型》</strong> 发布，这篇论文被视为原子系统的“开山鼻祖”。他提出了一种极其前沿的包管理方案——<strong>Nix</strong>。与传统包管理器相比，Nix 能够完美处理依赖与干扰问题，能够稳定复现，而且不会像其他包管理器那样出现“更新一半关机，再打开软件就炸了”的情形，也使重装系统变成了复制粘贴一个配置文件的事。</p>
+<p>那么，这种如此强大的法术，究竟由什么驱动呢？</p>
+<h2 id="2-何为原子？"><a href="#2-何为原子？" class="headerlink" title="2. 何为原子？"></a>2. 何为原子？</h2><p>学过初中化学的各位都知道，原子(Atom)是化学反应中不可再分的基本单位。它难以拆分，难以被更改，没有“半成品”，只有存在或不存在这两种状态。这正是原子系统的核心——<strong>不可分割</strong>。</p>
+<p>用过 Linux 的同学都知道：如果安装了多个内核，我们可以在引导系统时自由切换，安装、切换内核基本不会影响其他软件包。对照原子性的定义来看：编译后的内核不可拆分，切换内核也不可能只切一半——是的，这就是一个典型的<strong>原子操作</strong>。</p>
+<p>在原子系统中，我们可以把内核、操作系统、应用、数据比作相互包裹、密不可分的——<strong>洋葱</strong>。每次更新系统或软件时，每一层的“核”都只是被重新生成和替换。并且，原子系统绝不允许未完成的操作发生，不会出现“一颗老鼠屎坏了满锅粥”的情况。相比之下，给普通系统安装软件就像在一张由上百块布料拼成的毯子上打补丁——每次更换某块布料都可能对上层或下层的组件造成“毁灭性”打击，容易造成不稳定的情况发生。（补充：在现代Linux包管理环境已经极少见到这种现象，但仍然存在，尤其是RPM的Multimedia包组）</p>
+<p>而前面提到的某些厂商宣传的“原子”噱头，本质上只是管理更精细一些，然后取了个听起来高大上的名字，跟真正的原子操作可以说是八竿子打不着。</p>
+<p>这里也有一个常见的误区：很多人以为原子系统是“完全无法更改”的，根本上来讲，那是不可变系统。所以这种说法并不严谨。比如 NixOS 会提供 <code>/etc/nixos/configuration.nix</code>，你可以方便快捷地调节系统大大小小的配置。甚至在你<strong>完全掌握其语法参数</strong>后，比通过其他途径更优雅。以我自己为例：我是个不太“整洁”的人，每次装完一些软件包都会忘了卸载，而在 NixOS 里，这些“原子”就静静躺在配置文件里，可以随时删除，不会忘记，十分舒适。</p>
+<h2 id="3-原子与函数（Nix）"><a href="#3-原子与函数（Nix）" class="headerlink" title="3. 原子与函数（Nix）"></a>3. 原子与函数（Nix）</h2><blockquote>
+<p>注意！以下内容可能会略显枯燥。<br>由于本人未在其他发行版上使用过 Nix，下文可能会出现 Nix 与 NixOS 混为一谈的现象，还请批评指正。</p>
+</blockquote>
+<p>NixOS 以及 Nix 的工作原理主要在 Eelco 的两篇论文中被完整阐释：</p>
+<ul>
+<li>《The Purely Functional Software Deployment Model》</li>
+<li>《NixOS: A Purely Functional Linux Distribution》</li>
+</ul>
+<p>由于时间原因，我没有办法详细阅读两篇文章的全部内容，只读了 Introduction 部分。具体的实现，感兴趣的各位可以自行阅读余下的 Foundations 与 Applications。在此我会尽可能简单地阐释，不过也可能出现疏漏，还请指正。</p>
+<p>与其他发行版的分散式存储不同，在 NixOS 中，所有的软件包——无论是可执行文件还是源码——均存在于系统的“中央仓库” <code>/nix/store</code> 里，由 Nix 统一管理。在这个目录下，每个软件都被当作一个“原子”。Nix 并不关心这个原子里面有什么，它只需要知道这个原子应该与哪些原子相关联。</p>
+<p>乍一看，这比普通的包管理器只是多了一个统一化管理。不过，还记得前面提到的“完美避免依赖冲突”吗？这就要说到 Nix 的另一精妙机制：在每个原子构建时都会被打上一个<strong>哈希值</strong>。这个哈希值由多种方式生成，像身份证号一样具有唯一性，基本不会出现撞车的问题，因而多个版本、多个来源的软件包可以和谐共存。而且，这个机制强制要求所有原子在构建时指定依赖的完整路径，从此不再有“找不到依赖”的问题。哈希串的唯一性也赋予了其快速精确查找的能力——Nix 不需要去理解一个文件，只需要记录并扫描其依赖的哈希串，就能自动找到它。</p>
+<p>这和计算机编程中的<strong>函数</strong>思想完全一致：我不关心你是什么，我只关心我需要给你什么，你会给我吐出什么。简单，粗暴，优雅，快捷。</p>
+<blockquote>
+<p>We show how a full-featured Linux distribution, NixOS, can be built and configured in a declarative way using principles borrowed from purely functional languages, giving rise to properties such as atomicity of upgrades and the ability to roll back.</p>
+<p>我们展现了一个具有完整功能的Linux发行版，NixOS，它能够被用声明的方式，采用从纯粹函数式语言借来的原则被构建与配置，从而实现升级的原子性以及回滚能力等特性。</p>
+<p>来自《NixOS: A Purely Functional Linux Distribution》，Eelco Dolstra</p>
+</blockquote>
+<p>至于 NixOS，它比 Nix 更加激进。Nix 仅仅将软件层原子化，而 NixOS 把<strong>系统本身</strong>也作为一个原子，和软件包一样进行管理。NixOS 继承了 Nix“多版本共存”的特性，其版本在此被称为“世代”。不同的是，对用户来说，自己从“使用者”转变为了“构建者”——设置系统前需要学习一门截然不同的编程语言，自行修改配置文件，重新构建系统，学习难度直线上升，更别提 Home Manager、Flakes 等花样用法了。</p>
+<p>不过，NixOS 并不是原子系统唯一的出路。</p>
+<h2 id="4-更多风味"><a href="#4-更多风味" class="headerlink" title="4. 更多风味"></a>4. 更多风味</h2><h3 id="4-1-用-Git-管理原子（OSTree）"><a href="#4-1-用-Git-管理原子（OSTree）" class="headerlink" title="4.1. 用 Git 管理原子（OSTree）"></a>4.1. 用 Git 管理原子（OSTree）</h3><p>众所周知，Git 是目前业界公认的成熟的版本控制系统，多数大型项目如 Linux 内核等均使用 Git 进行管理。</p>
+<p>首先给一些不了解 Git 的读者澄清一个误区：尽管在 commit 时 Git 会显示改动文件的差异，但它并不通过这些差异存储文件，而是通过给每个版本**“存快照”**的方式存储。</p>
+<p>那么，我们能否用 Git 来管理原子系统？</p>
+<p>2011 年，Red Hat 工程师 Colin Walters 受 Git 启发，创造性地提出了 <strong>OSTree</strong> 这一原子系统概念。OSTree 与 Git 的思想几乎完全相同，最初被应用于 GNOME Continuous，后来推广到 Fedora Silverblue、Bluefin、Flatpak 等发行版与应用框架。OSTree 的最大特点是：可以随时远程拉取、自由切换系统版本，而不必担心系统软件包的版本问题。每次更新都会进行增量更新，并且系统文件只读，不允许随意修改，相比Nix，操作更加简单便捷，容易理解。</p>
+<p>不过，相比于 Nix，其不可变性明显较为劣势。并且由于 OSTree 只原子化了系统层面，并没有对所有软件进行原子化，依赖冲突还是不可避免地会出现。</p>
+<h3 id="4-2-双重身份（ABRoot-及其类似物）"><a href="#4-2-双重身份（ABRoot-及其类似物）" class="headerlink" title="4.2. 双重身份（ABRoot 及其类似物）"></a>4.2. 双重身份（ABRoot 及其类似物）</h3><p>2009 年，Google 推出 ChromeOS，随之而来的是一种崭新的原子更新方式——<strong>A&#x2F;B System Update</strong>。其本质上就是在本地磁盘保存当前操作系统的两个副本，且均为只读。比如我正在使用 A 分区，更新时对系统的改动会写入 B 分区。这样一来，改动不会影响当前正在使用的分区，只需重启即可完成更新；即使更新失败，也不会影响原先的 A 分区，可以自动回滚，便捷又安全。</p>
+<p>后来 Google 也将类似的思路推广到了 Android（即“无缝更新”）。不过要注意：<strong>Android 的 A&#x2F;B 更新通常采用增量方式</strong>，而非每次下载完整的系统镜像。但双分区、可回滚的核心思想是一致的，可以说原子系统的应用非常广泛。</p>
+<p>类似的，Vanilla OS 采用的是<strong>ABRoot</strong>，本质相同——双分区+自动回滚设计。缺点是磁盘空间会多出一些占用，但总体在可接受范围内。插一句题外话：Vanilla OS使用自制的 Apx作为用户级应用管理器，能够兼容apt&#x2F;dnf&#x2F;pacman&#x2F;apk等多种包管理器与格式，并且主要推广Flatpak进行应用管理，十分前沿新颖。可惜的是，Vanilla OS采用OCI镜像发布，需要 ghcr 进行网络安装，Flatpak 应用也存在中文字体、剪贴板同步等小毛病。</p>
+<p>有意思的是，OpenHarmony也采用了A&#x2F;B分区的更新机制，不过其原子性明显不如上面提到的其他系统，可复现性也十分有限。</p>
+<p>由于后两种风味我本人并没有使用过，此处不做比较与进一步评价。</p>
+<h3 id="4-3-应用层的原子化-Flatpak-AppImage"><a href="#4-3-应用层的原子化-Flatpak-AppImage" class="headerlink" title="4.3. 应用层的原子化 (Flatpak&amp;AppImage)"></a>4.3. 应用层的原子化 (Flatpak&amp;AppImage)</h3><p>严格来说，Flatpak 和 AppImage 并不算“原子系统”，因为它们只原子化了应用层，而非整个操作系统。但它们身上确实闪耀着原子化的思想，可以称为 <strong>half‑Atom</strong>。</p>
+<ul>
+<li><strong>AppImage</strong>：一个文件就是一个应用，所有依赖都打包在里面。下载、加执行权限、双击运行——没有依赖冲突，甚至不需要“安装”这个动作。  </li>
+<li><strong>Flatpak</strong>：应用与运行时分离，每个应用只能看到自己的沙箱和自己的依赖副本。更新时下载完整的新镜像，支持多版本运行时共存。</li>
+</ul>
+<p>它们与 NixOS 的根本区别在于<strong>粒度</strong>：NixOS 原子化了整个系统，而 Flatpak&#x2F;AppImage 只管用户应用。系统本身的更新仍然依赖传统的包管理器（除由OSTree管理的发行版）。又因为AppImage 几乎不共享依赖，Flatpak 通过运行时共享依赖，依赖地狱也被完美解决。</p>
+<p>不过，对于普通用户来说，AppImage 和 Flatpak 可能是最早接触到的“原子化”体验——装个 AppImage 不用装依赖，这就是原子理念在应用层的胜利。</p>
+<h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h2><p>回望操作系统半个多世纪的发展历程，每一次重大的技术变革，本质上都是对“复杂性”的一次重新定义和管理。从批处理系统到分时系统，从单任务到多任务，从单体内核到微内核，人类一直在试图驯服计算机系统这头日益复杂的野兽。原子操作系统的出现，正是这场持续斗争中最新、也可能是最彻底的一次尝试。</p>
+<p>但我们也必须看到原子系统的劣势：</p>
+<ul>
+<li>在NixOS里改设置，需要更改一大段配置文件，然后重新构建整个系统，较为耗时。</li>
+<li><code>/nix/store</code> 存储空间易占用过大，可能需经常清理世代。</li>
+<li>某些闭源程序在原子系统上运行不稳定。  </li>
+<li>配置文件与系统构建与传统Linux的逻辑完全不同。</li>
+<li>不允许直接执行二进制程序，需要修改配置文件或者构建包。</li>
+</ul>
+<p>所以，原子系统是一个有力的工具，但它并非适合所有人、所有场景。它更像是一把双刃剑，锋利、精准，但需要学习如何使用。</p>
+<p>看到这里，希望各位能对原子系统有一个更全面、更辨证的认识。它既有令人惊叹的魅力，也有不可忽视的代价。愿原子系统在日新月异的数字世界里继续演进，同时也希望未来的某一天，会有更多的社区贡献者来挑战它今天留下的难题。</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src="/img/avatar.png" title="头像" alt="头像"><img class="post-copyright__author_img_front" src="/img/avatar.png" title="头像" alt="头像"></a><div class="post-copyright__author_name">Frank Fang</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://www.091209.xyz/2026/06/28/atomic-os/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://www.091209.xyz/2026/06/28/atomic-os/')">什么是“原子系统”？</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://www.091209.xyz/2026/06/28/atomic-os/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=什么是“原子系统”？&amp;url=http://www.091209.xyz/2026/06/28/atomic-os/&amp;pic=/post-images/atomic-os.png" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://www.091209.xyz" target="_blank">Frank's Blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Operating-Systems/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Operating Systems<span class="tagsPageCount">10</span></a><a class="post-meta__box__tags" href="/tags/Videos/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Videos<span class="tagsPageCount">6</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/post-images/atomic-os.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2026/04/27/a-file-format-that-changed-the-world/"><img class="prev-cover" src="/post-images/pdf-cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">改变世界的文件格式</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/08/14/2025-08-14-unpopular-fydeos/" title="为什么FydeOS在国内注定小众？"><img class="cover" src="/post-images/2025-08-14-unpopular-fydeos.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-14</div><div class="title">为什么FydeOS在国内注定小众？</div></div></a></div><div><a href="/2025/09/11/HjmnFla6g-/" title="Linux与个人市场——成也开放，败也开放"><img class="cover" src="/post-images/HjmnFla6g-.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-11</div><div class="title">Linux与个人市场——成也开放，败也开放</div></div></a></div><div><a href="/2026/04/03/blissos/" title="“安卓电脑”，能用吗？"><img class="cover" src="/post-images/blissos.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-04-03</div><div class="title">“安卓电脑”，能用吗？</div></div></a></div><div><a href="/2026/03/14/linux-is-not-god/" title="Linux不是神"><img class="cover" src="/post-images/Cover.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-03-14</div><div class="title">Linux不是神</div></div></a></div><div><a href="/2025/07/26/2025-07-26-fydeos-uefi/" title="用rEFInd-theme-Yours解决FydeOS UEFI安全启动问题 "><img class="cover" src="/post-images/2025-07-26-fydeos-uefi.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-26</div><div class="title">用rEFInd-theme-Yours解决FydeOS UEFI安全启动问题 </div></div></a></div><div><a href="/2025/10/02/fydeos-gapp-install/" title="如何在FydeOS v20中手动安装Open GApps? "><img class="cover" src="/post-images/fydeos-gapp-install.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-02</div><div class="title">如何在FydeOS v20中手动安装Open GApps? </div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%BA%E4%BD%95%E5%8E%9F%E5%AD%90%EF%BC%9F%EF%BC%88Nix%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">1. 为何原子？（Nix）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BD%95%E4%B8%BA%E5%8E%9F%E5%AD%90%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">2. 何为原子？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8E%9F%E5%AD%90%E4%B8%8E%E5%87%BD%E6%95%B0%EF%BC%88Nix%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">3. 原子与函数（Nix）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%9B%B4%E5%A4%9A%E9%A3%8E%E5%91%B3"><span class="toc-number">4.</span> <span class="toc-text">4. 更多风味</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E7%94%A8-Git-%E7%AE%A1%E7%90%86%E5%8E%9F%E5%AD%90%EF%BC%88OSTree%EF%BC%89"><span class="toc-number">4.1.</span> <span class="toc-text">4.1. 用 Git 管理原子（OSTree）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%8F%8C%E9%87%8D%E8%BA%AB%E4%BB%BD%EF%BC%88ABRoot-%E5%8F%8A%E5%85%B6%E7%B1%BB%E4%BC%BC%E7%89%A9%EF%BC%89"><span class="toc-number">4.2.</span> <span class="toc-text">4.2. 双重身份（ABRoot 及其类似物）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E5%BA%94%E7%94%A8%E5%B1%82%E7%9A%84%E5%8E%9F%E5%AD%90%E5%8C%96-Flatpak-AppImage"><span class="toc-number">4.3.</span> <span class="toc-text">4.3. 应用层的原子化 (Flatpak&amp;AppImage)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">5. 总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/06/28/atomic-os/" title="什么是“原子系统”？"><img src="/post-images/atomic-os.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="什么是“原子系统”？"/></a><div class="content"><a class="title" href="/2026/06/28/atomic-os/" title="什么是“原子系统”？">什么是“原子系统”？</a><time datetime="2026-06-28T05:21:54.000Z" title="发表于 2026-06-28 13:21:54">2026-06-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/27/a-file-format-that-changed-the-world/" title="改变世界的文件格式"><img src="/post-images/pdf-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="改变世界的文件格式"/></a><div class="content"><a class="title" href="/2026/04/27/a-file-format-that-changed-the-world/" title="改变世界的文件格式">改变世界的文件格式</a><time datetime="2026-04-27T14:43:38.000Z" title="发表于 2026-04-27 22:43:38">2026-04-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/25/rocky-thx/" title="Rocky Linux,我谢谢你"><img src="/post-images/rocky-thx.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Rocky Linux,我谢谢你"/></a><div class="content"><a class="title" href="/2026/04/25/rocky-thx/" title="Rocky Linux,我谢谢你">Rocky Linux,我谢谢你</a><time datetime="2026-04-25T06:08:57.000Z" title="发表于 2026-04-25 14:08:57">2026-04-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/03/blissos/" title="“安卓电脑”，能用吗？"><img src="/post-images/blissos.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="“安卓电脑”，能用吗？"/></a><div class="content"><a class="title" href="/2026/04/03/blissos/" title="“安卓电脑”，能用吗？">“安卓电脑”，能用吗？</a><time datetime="2026-04-03T13:04:26.000Z" title="发表于 2026-04-03 21:04:26">2026-04-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/25/davinci-fedora/" title="如何在Fedora 43上安装DaVinci Resolve？"><img src="/post-images/davinci-fedora.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何在Fedora 43上安装DaVinci Resolve？"/></a><div class="content"><a class="title" href="/2026/03/25/davinci-fedora/" title="如何在Fedora 43上安装DaVinci Resolve？">如何在Fedora 43上安装DaVinci Resolve？</a><time datetime="2026-03-25T14:20:16.000Z" title="发表于 2026-03-25 22:20:16">2026-03-25</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:fzxfrank@qq.com" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" href="/atom.xml" title="RSS"><i class="anzhiyufont anzhiyu-icon-rss"></i></a><img class="footer_mini_logo" title="Back to Top" alt="Back to Top" onclick="anzhiyu.scrollToDest(0, 500)" src="/img/avatar.png" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/FangcatChina" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://space.bilibili.com/588672425" title="Bilibili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://hexo.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2026 By <a class="footer-bar-link" href="/" title="Frank Fang" target="_blank">Frank Fang</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://icp.gov.moe/?keyword=20250976" title="萌ICP备20250976号">萌ICP备20250976号</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">0</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://www.091209.xyz/" title="博客"><img class="back-menu-item-icon" src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><span> 隧道</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><span> 关于本人</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:toRandomPost()"><span> 随便逛逛</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 0.88rem;">C++<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 0.88rem;">Linux<sup>5</sup></a><a href="/tags/Operating-Systems/" style="font-size: 0.88rem;">Operating Systems<sup>10</sup></a><a href="/tags/Python/" style="font-size: 0.88rem;">Python<sup>2</sup></a><a href="/tags/Videos/" style="font-size: 0.88rem;">Videos<sup>6</sup></a><a href="/tags/Visual-Studio-Code/" style="font-size: 0.88rem;">Visual Studio Code<sup>1</sup></a><a href="/tags/Web/" style="font-size: 0.88rem;">Web<sup>2</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="5183840599" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://music.163.com/#/playlist?id=5183840599&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.7.1",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Frank Fang 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><script>(() => {
+  let initFn = window.walineFn || null
+
+  const initWaline = (Fn) => {
+    const waline = Fn(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://lcapi.091209.xyz/',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+      imageUploader: true,
+    }, null))
+
+    const destroyWaline = () => {
+      waline.destroy()
+    }
+
+    anzhiyu.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
+  }
+
+  const loadWaline = async () => {
+    if (initFn) initWaline(initFn)
+    else {
+      await getCSS('https://cdn.cbd.int/@waline/client@3.8.0/dist/waline.css')
+      if (true) await getCSS('https://cdn.cbd.int/@waline/client@3.8.0/dist/waline-meta.css')
+      const { init } = await import('https://cdn.cbd.int/@waline/client@3.8.0/dist/waline.js')
+      initFn = init || Waline.init
+      initWaline(initFn)
+      window.walineFn = initFn
+    }
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = content => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = async () => {
+    try {
+      const res = await fetch('https://lcapi.091209.xyz/api/comment?type=recent&count=6', { method: 'GET' })
+      const result = await res.json()
+      const walineArray = result.data.map(e => {
+        return {
+          'content': changeContent(e.comment),
+          'avatar': e.avatar,
+          'nick': e.nick,
+          'url': e.url + '#' + e.objectId,
+          'date': e.time || e.insertedAt
+        }
+      })
+      saveToLocal.set('waline-newest-comments', JSON.stringify(walineArray), 10/(60*24))
+      generateHtml(walineArray)
+    } catch (err) {
+      console.error(err)
+      const $dom = document.querySelector('#card-newest-comments .aside-list')
+      $dom.textContent= "无法获取评论，请确认相关配置是否正确"
+    }
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('waline-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://cdn.cbd.int/qrcodejs@1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="https://keepandroidopen.org/banner.js?id=home_top"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
